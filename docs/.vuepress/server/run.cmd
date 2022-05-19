@@ -1,0 +1,1 @@
+start powershell -c "Start-Process -WindowStyle Hidden -FilePath node ./app.js -PassThru -RedirectStandardOutput out.log|out-file -filepath ./process.log"

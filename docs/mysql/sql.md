@@ -1,0 +1,25 @@
+---
+title: sql
+---
+
+## 创建库
+
+```sql
+CREATE DATABASE IF NOT EXISTS db_user;
+```
+
+## 查看所有库
+
+```sql
+-- 权限内的所有库
+SHOW DATABASES;
+
+-- 过滤
+SHOW DATABASES like '%db_user';
+```
+
+## 删除
+
+```sql
+DROP DATABASE IF EXISTS db_user;
+```
