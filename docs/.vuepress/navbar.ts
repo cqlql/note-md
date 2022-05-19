@@ -31,13 +31,14 @@ readdir({
     if (dirname === 'README.md') return
     if (isDirectory) {
       let setting = dirSettingMap[dirname]
+      let text = setting?.text || dirname
       return {
-        text: setting?.text || dirname,
+        text: setting?.text || dirname.replace(/^\d+_/, ''),
         icon: setting?.icon,
         prefix: parentDirname ? `${dirname}/` : `/${dirname}/`,
       }
     }
-    const fileNameBase = dirname.replace(/\.md$/, '')
+    const fileNameBase = dirname.replace(/^\d+_|\.md$/g, '')
     return {
       text: fileNameBase,
       link: dirname,

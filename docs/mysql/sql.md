@@ -23,3 +23,31 @@ SHOW DATABASES like '%db_user';
 ```sql
 DROP DATABASE IF EXISTS db_user;
 ```
+
+## 创建表
+
+创建用户表
+
+```sql
+CREATE TABLE db_user.user (
+  id INT NOT NULL AUTO_INCREMENT,
+  username CHAR(45) NOT NULL,
+  password CHAR(45) NOT NULL,
+  nickname CHAR(45) NOT NULL,
+  PRIMARY KEY (id)
+);
+```
+
+## 插入数据
+
+```sql
+INSERT INTO user (username,password,nickname)
+  VALUES ('joly','123123','张三');
+```
+
+## 删除数据
+
+```sql
+-- 根据条件删除
+DELETE FROM db_user.user WHERE id=2;
+```
