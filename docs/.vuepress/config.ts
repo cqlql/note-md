@@ -5,7 +5,7 @@ import theme from './theme'
 export default defineUserConfig({
   port: 3002,
   lang: 'zh-CN',
-  title: '开发笔记',
+  title: '$开发笔记$',
   description: ' ',
 
   base: '/',
