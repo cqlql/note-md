@@ -1,0 +1,10 @@
+import{_ as a}from"./plugin-vue_export-helper.21dcd24c.js";import{r,c as i,b as e,h as s,F as d,i as c,f as o,o as t}from"./app.ad2f3669.js";const l={},m=c(`<h2 id="\u968F\u673A\u6307\u5B9A\u8303\u56F4\u7684\u6574\u6570" tabindex="-1"><a class="header-anchor" href="#\u968F\u673A\u6307\u5B9A\u8303\u56F4\u7684\u6574\u6570" aria-hidden="true">#</a> \u968F\u673A\u6307\u5B9A\u8303\u56F4\u7684\u6574\u6570</h2><div class="language-c# ext-c# line-numbers-mode"><pre class="language-c#"><code>var rng = new Random();
+// \u5927\u4E8E\u6216\u7B49\u4E8E-20 \u5C0F\u4E8E55
+Console.WriteLine(rng.Next(-20, 55));
+
+// \u5927\u4E8E\u6216\u7B49\u4E8E0 \u5C0F\u4E8E55
+Console.WriteLine(rng.Next(55));
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="\u968F\u673A\u53CC\u7CBE\u5EA6\u6D6E\u70B9\u6570" tabindex="-1"><a class="header-anchor" href="#\u968F\u673A\u53CC\u7CBE\u5EA6\u6D6E\u70B9\u6570" aria-hidden="true">#</a> \u968F\u673A\u53CC\u7CBE\u5EA6\u6D6E\u70B9\u6570</h2><p>\u8FD4\u56DE\u5927\u4E8E\u7B49\u4E8E 0 \u5C0F\u4E8E 1 \u7684\u968F\u673A\u6D6E\u70B9\u6570</p><div class="language-c# ext-c# line-numbers-mode"><pre class="language-c#"><code>var rng = new Random();
+
+Console.WriteLine(rng.NextDouble());
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="\u76F8\u5173\u6587\u6863" tabindex="-1"><a class="header-anchor" href="#\u76F8\u5173\u6587\u6863" aria-hidden="true">#</a> \u76F8\u5173\u6587\u6863</h2>`,6),v={href:"https://docs.microsoft.com/zh-cn/dotnet/api/system.random?view=net-5.0",target:"_blank",rel:"noopener noreferrer"},h=o("\u5B98\u65B9\u6587\u6863");function u(_,b){const n=r("ExternalLinkIcon");return t(),i(d,null,[m,e("p",null,[e("a",v,[h,s(n)])])],64)}var g=a(l,[["render",u],["__file","Random \u968F\u673A\u6570.html.vue"]]);export{g as default};
