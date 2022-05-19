@@ -14,7 +14,7 @@ export default hopeTheme({
 
   // logo: '/logo.svg',
 
-  repo: '/cqlql/node-md',
+  repo: 'cqlql/node-md',
 
   docsDir: 'demo/src',
 
