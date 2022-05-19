@@ -14,7 +14,7 @@ export default hopeTheme({
 
   // logo: '/logo.svg',
 
-  repo: 'vuepress-theme-hope/vuepress-theme-hope',
+  repo: '/cqlql/node-md',
 
   docsDir: 'demo/src',
 
