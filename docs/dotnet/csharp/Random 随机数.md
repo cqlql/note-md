@@ -19,6 +19,19 @@ var rng = new Random();
 Console.WriteLine(rng.NextDouble());
 ```
 
+## 线程安全 Random.Shared
+
+[文档： .NET 6 新特性 —— Random.Shared](https://vip.kingdee.com/article/313989673850775040?productLineId=29)
+
+```csharp
+
+Console.WriteLine(
+  Random.Shared.Next(-20, 55)
+);
+
+
+```
+
 ## 相关文档
 
 [官方文档](https://docs.microsoft.com/zh-cn/dotnet/api/system.random?view=net-5.0)
