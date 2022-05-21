@@ -18,7 +18,7 @@ public class InfoController : ControllerBase
 
 1. [Router]
 
-   1. 用来注册相对 URL，以处理客户端使用该 URL 发起的 HTTP 请求。[controller] 将使用类名 Controller 前面的字符，所以此处的相对 URL 是 /api/info
+   1. 用来注册相对 URL，以处理客户端使用该 URL 发起的 HTTP 请求。[controller] 将使用类名 Controller 前面的字符，所以此处的相对 URL 是 `/api/info`
 
 2. [HttpGet]
    1. 设置 HTTP 方法

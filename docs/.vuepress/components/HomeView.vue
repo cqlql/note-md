@@ -5,7 +5,7 @@ let newList = []
 
 function handle(children, newList) {
   children.forEach((item) => {
-    if (typeof item == 'string') return
+    // if (typeof item == 'string') return
     let newItem = {
       name: item.text,
       icon: item.icon,
