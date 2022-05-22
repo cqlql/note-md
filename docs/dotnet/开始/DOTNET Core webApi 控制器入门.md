@@ -16,11 +16,11 @@ public class InfoController : ControllerBase
 
 ```
 
-1. [Router]
+1. [Router] 特性
 
    1. 用来注册相对 URL，以处理客户端使用该 URL 发起的 HTTP 请求。[controller] 将使用类名 Controller 前面的字符，所以此处的相对 URL 是 `/api/info`
 
-2. [HttpGet]
+2. [HttpGet] 特性
    1. 设置 HTTP 方法
 
 ## 路由名称
@@ -51,6 +51,42 @@ public class InfoController : ControllerBase
 
 ```
 
+## 日志 ILogger 基本使用
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController]
+[Route("api/[controller]")]
+public class InfoController : ControllerBase
+{
+
+  // 从容器中获取ILogger实例
+  private readonly ILogger<LogTestController> _logger;
+  public LogTestController(ILogger<LogTestController> logger)
+  {
+      _logger = logger;
+  }
+
+  // 使用ILogger
+  [HttpGet("log")]
+  public void Log()
+  {
+      _logger.LogInformation("Info");
+      _logger.LogError("Error");
+      _logger.LogWarning("Warning");
+  }
+
+  [HttpGet(Name = "GetInfo")]
+  public int Get()
+  {
+    return Random.Shared.Next(2);
+  }
+}
+
+
+```
+
 ## 参考文档
 
 <!--
@@ -61,3 +97,7 @@ https://blog.csdn.net/xiaouncle/article/details/83869952
 -->
 
 [ASP.NET Web API 2 | Microsoft Docs](https://docs.microsoft.com/zh-cn/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#route-names)
+
+[.net 日志 ILogger 基本使用](https://blog.csdn.net/m0_47659279/article/details/119845995)
+
+[.NET 中的日志记录 | Microsoft Docs](https://docs.microsoft.com/zh-cn/dotnet/core/extensions/logging)
