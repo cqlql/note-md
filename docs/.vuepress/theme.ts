@@ -3,7 +3,7 @@ import navbar from './navbar'
 import sidebar from './sidebar'
 
 export default hopeTheme({
-  hostname: 'https://vuepress-theme-hope-v2-demo.mrhope.site',
+  hostname: 'http://docs.cqlql.top',
 
   author: {
     name: 'Mr.Joly',
@@ -16,7 +16,7 @@ export default hopeTheme({
 
   repo: 'cqlql/node-md',
 
-  docsDir: 'demo/src',
+  docsDir: 'docs',
 
   // navbar
   navbar: navbar,
@@ -24,28 +24,28 @@ export default hopeTheme({
   // sidebar
   sidebar: sidebar,
 
-  footer: '默认页脚',
+  // footer: '',
 
   displayFooter: true,
 
   pageInfo: ['Author', 'Original', 'Date', 'Category', 'Tag', 'ReadingTime'],
 
-  encrypt: {
-    config: {
-      '/guide/encrypt.html': ['1234'],
-    },
-  },
+  // encrypt: {
+  //   config: {
+  //     '/guide/encrypt.html': ['1234'],
+  //   },
+  // },
 
-  plugins: {
-    blog: {
-      autoExcerpt: true,
-    },
+  // plugins: {
+  //   // blog: {
+  //   //   autoExcerpt: true,
+  //   // },
 
-    mdEnhance: {
-      enableAll: true,
-      presentation: {
-        plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
-      },
-    },
-  },
+  //   mdEnhance: {
+  //     // enableAll: true,
+  //     // presentation: {
+  //     //   plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
+  //     // },
+  //   },
+  // },
 })
