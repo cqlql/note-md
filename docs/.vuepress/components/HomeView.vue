@@ -53,7 +53,7 @@ handle(sidebar, newList)
 
   // display: grid;
   // grid-template-columns: 1fr 1fr 1fr;
-  columns: 3;
+
   .item {
     // flex: 1;
     break-inside: avoid;
@@ -74,6 +74,25 @@ handle(sidebar, newList)
   }
   ul {
     margin: 0;
+  }
+}
+
+html[data-theme='light'] {
+  .HomeView {
+    .item {
+      background-color: #f9f9f9;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .HomeView {
+    columns: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .HomeView {
+    columns: 3;
   }
 }
 </style>
