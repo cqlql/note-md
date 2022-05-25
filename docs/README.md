@@ -1,6 +1,7 @@
 ---
 title: 首页
 home: true
+heroText: false
 ---
 
 <HomeView></HomeView>

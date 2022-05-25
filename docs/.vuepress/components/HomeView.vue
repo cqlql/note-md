@@ -10,10 +10,9 @@ function handle(children, newList) {
       name: item.text,
       icon: item.icon,
       link: item.fullLink,
-      children: [],
     }
     if (item.children) {
-      handle(item.children, newItem.children)
+      handle(item.children, (newItem.children = []))
     }
 
     newList.push(newItem)
@@ -24,23 +23,32 @@ handle(sidebar, newList)
 <template>
   <div class="HomeView">
     <div class="item" v-for="item of newList">
-      <div class="item-name">
-        <i v-if="item.icon" :class="'icon iconfont icon-' + item.icon"></i>
-        {{ item.name }}</div
-      >
-      <ul>
-        <li v-for="itemSecond of item.children">
-          <router-link v-if="itemSecond.link" :to="itemSecond.link">
-            {{ itemSecond.name }}
+      <template v-if="item.children">
+        <div class="item-name">
+          <i v-if="item.icon" :class="'icon iconfont icon-' + item.icon"></i>
+          {{ item.name }}</div
+        >
+        <ul>
+          <li v-for="itemSecond of item.children">
+            <router-link v-if="itemSecond.link" :to="itemSecond.link">
+              {{ itemSecond.name }}
+            </router-link>
+            <div v-else class="name">{{ itemSecond.name }}</div>
+            <ul v-if="itemSecond.children">
+              <li v-for="itemThird of itemSecond.children">
+                <router-link :to="itemThird.link">
+                  {{ itemThird.name }}
+                </router-link>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </template>
+      <ul v-else>
+        <li>
+          <router-link :to="item.link">
+            {{ item.name }}
           </router-link>
-          <div v-else class="name">{{ itemSecond.name }}</div>
-          <ul v-if="itemSecond.children.length">
-            <li v-for="itemThird of itemSecond.children">
-              <router-link :to="itemThird.link">
-                {{ itemThird.name }}
-              </router-link>
-            </li>
-          </ul>
         </li>
       </ul>
     </div>
@@ -58,7 +66,6 @@ handle(sidebar, newList)
     // flex: 1;
     break-inside: avoid;
     background-color: #242424;
-
     margin-bottom: 20px;
     border-radius: 8px;
     padding: 28px 32px;
