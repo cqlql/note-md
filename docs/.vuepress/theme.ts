@@ -24,28 +24,7 @@ export default hopeTheme({
   // sidebar
   sidebar: sidebar,
 
-  // footer: '',
-
   displayFooter: true,
 
   pageInfo: ['Author', 'Original', 'Date', 'Category', 'Tag', 'ReadingTime'],
-
-  // encrypt: {
-  //   config: {
-  //     '/guide/encrypt.html': ['1234'],
-  //   },
-  // },
-
-  // plugins: {
-  //   // blog: {
-  //   //   autoExcerpt: true,
-  //   // },
-
-  //   mdEnhance: {
-  //     // enableAll: true,
-  //     // presentation: {
-  //     //   plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
-  //     // },
-  //   },
-  // },
 })
