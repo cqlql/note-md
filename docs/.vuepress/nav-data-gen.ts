@@ -18,6 +18,9 @@ const settingMap = {
   mysql: {
     icon: 'mysql',
   },
+  js: {
+    icon: 'javascript',
+  },
   'DOTNET Core webApi 控制器入门': {
     text: '.NET Core webApi 控制器入门',
   },
