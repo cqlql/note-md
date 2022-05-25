@@ -6,7 +6,7 @@ export default defineUserConfig({
   port: 3002,
   lang: 'zh-CN',
   title: '开发笔记',
-  description: ' ',
+  // description: 'welcome',
 
   base: '/',
 
