@@ -20,40 +20,6 @@ str.indexOf('ow') // 4
 srt.lastIndexOf('ow') // 6
 ```
 
-## 编码、解码
-
-### js数据编解码
-escape、unescape
-就是完全的编码解码
-兼容性:all
-
-### url参数编码解码
-encodeURIComponent decodeURIComponent
-避免#等特殊字符截断
--_.!~*'()   这些符合是不会被编码解码的
-
-```js
-'<a href="http://passport.baidu.com/?u='+encodeURIComponent("http://cang.baidu.com/bruce42")+'">退出</a>';
-```
-
-兼容性:all
-
-### url编码解码
-encodeURI decodeURI
-保证有特殊字符的url路径能进行访问，但现在大部分浏览器会自动对未编码的url进行编码(至于哪些浏览器，什么机制，待测)
-
-;/?:@&=+$,#  这些字符不会被编码解码
-
-```js
-location.href=encodeURI(http://cang.baidu.com/百度存储/do/s?word=xx&ct=21);
-```
-
-兼容性:all
-
-### 对应的php编码解码
-rawurlencode、rawurldecode对应 encodeURIComponent decodeURIComponent
-urlencode()、urldecode()应该对应？encodeURI decodeURI
-
 ## 字符串比较
 
 小返回-1，相等返回0，大返回1。可实现排序
