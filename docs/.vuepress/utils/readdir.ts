@@ -18,12 +18,14 @@ interface CallbackResult {
 interface readdirOptions {
   rootPath: string
   ignore: string[]
-  callback: (params: CallbackParams) => any
+
   initValue: any[]
+  callback: (params: CallbackParams) => any
+  sort?: (arr: any[]) => void
 }
 
 export default function readdir(options: readdirOptions) {
-  let { rootPath, ignore, callback, initValue } = options
+  let { rootPath, ignore, callback, initValue, sort = (arr: any[]) => {} } = options
   const dirList = fs.readdirSync(rootPath)
 
   function handle(parentPath: string, parentDir: string, dir: string, children) {
@@ -43,10 +45,11 @@ export default function readdir(options: readdirOptions) {
 
     if (result !== undefined) {
       if (isDirectory) {
-        result.children = []
+        const nextChildren = (result.children = [])
         fs.readdirSync(currentPath).forEach((childDir) => {
-          handle(currentPath, dir, childDir, result.children)
+          handle(currentPath, dir, childDir, nextChildren)
         })
+        sort(nextChildren)
       }
 
       children.push(result)

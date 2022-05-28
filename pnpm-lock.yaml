@@ -4,6 +4,7 @@ specifiers:
   '@vuepress/client': ^2.0.0-beta.45
   '@vuepress/plugin-docsearch': 2.0.0-beta.45
   '@vuepress/plugin-search': 2.0.0-beta.45
+  front-matter: ^4.0.2
   vue: ^3.2.35
   vuepress: ^2.0.0-beta.45
   vuepress-theme-hope: ^2.0.0-beta.68
@@ -12,6 +13,7 @@ devDependencies:
   '@vuepress/client': 2.0.0-beta.45
   '@vuepress/plugin-docsearch': 2.0.0-beta.45
   '@vuepress/plugin-search': 2.0.0-beta.45
+  front-matter: 4.0.2
   vue: 3.2.35
   vuepress: 2.0.0-beta.45_pqggjzyxcqv4ydukigsdq6td2u
   vuepress-theme-hope: 2.0.0-beta.68
@@ -3234,6 +3236,12 @@ packages:
 
   /fraction.js/4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
+    dev: true
+
+  /front-matter/4.0.2:
+    resolution: {integrity: sha512-I8ZuJ/qG92NWX8i5x1Y8qyj3vizhXS31OxjKDu3LKP+7/qBgfIKValiZIEwoVoJKUHlhWtYrktkxV1XsX+pPlg==}
+    dependencies:
+      js-yaml: 3.14.1
     dev: true
 
   /fs-extra/10.1.0:

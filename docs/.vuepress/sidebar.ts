@@ -1,5 +1,5 @@
 // import { sidebar } from "vuepress-theme-hope";
-import navData from './nav-data-gen'
+import navData from './utils/nav-data-generate'
 
 const sidebar = {}
 

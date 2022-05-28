@@ -1,3 +1,7 @@
+---
+title: .NET Core webApi 控制器入门
+---
+
 在 Controller 文件夹中添加一个名为 InfoController.cs 的控制器类文件
 
 ```csharp
