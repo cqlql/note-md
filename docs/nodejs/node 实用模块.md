@@ -10,6 +10,7 @@
 - [node-notifier](#node-notifier)
 - [opn 打开其他程序](#opn-打开其他程序)
 - [chokidar](#chokidar)
+- [nodemon](#nodemon)
 
 ## node-portfinder 自动获取可用端口
 
@@ -102,3 +103,27 @@ https://github.com/paulmillr/chokidar
 基于 node.JS 的监听文件夹改变模块
 
 一般前端环境框架直接有依赖安装
+
+## nodemon
+
+实现监听文件改变，并自动重启 nodejs 服务
+
+:::warning
+
+全局安装会影响到 vuepress 包（包括项目内），所以建议项目安装
+
+:::
+
+```shell
+npm install -g nodemon
+```
+
+使用
+
+```shell
+nodemon ./server.js 8080
+```
+
+[nodemon 官网](https://nodemon.io)
+
+[nodemon github](https://github.com/remy/nodemon)

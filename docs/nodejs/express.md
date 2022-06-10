@@ -4,7 +4,9 @@
 - [get](#get)
 - [post](#post)
 - [文件上传](#文件上传)
-- [路由 post 参数获取](#路由-post-参数获取)
+- [路由参数](#路由参数)
+- [get 参数获取](#get-参数获取)
+- [post 参数获取](#post-参数获取)
 - [运行](#运行)
 
 ## 站点
@@ -66,7 +68,22 @@ router.post('/file', upload.single('file'), function (req, res) {
 module.exports = router
 ```
 
-## 路由 post 参数获取
+## 路由参数
+
+```js
+/**
+Route path: /users/:userId/books/:bookId
+Request URL: http://localhost:3000/users/34/books/8989
+req.params: { "userId": "34", "bookId": "8989" }
+ */
+app.get('/users/:userId/books/:bookId', (req, res) => {
+  res.send(req.params)
+})
+```
+
+## get 参数获取
+
+## post 参数获取
 
 [req.body 说明 - express4 api 中文手册](http://www.expressjs.com.cn/4x/api.html#req.body)
 
