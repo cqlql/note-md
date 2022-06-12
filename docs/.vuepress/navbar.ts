@@ -6,29 +6,12 @@ import navData from './utils/nav-data-generate'
 
 const navbarConfig = ['/']
 
-// function handle(children, lv, newChildren) {
-//   console.log('🚀 -- handle -- lv', lv)
-//   if (lv > 1) return
-//   children.forEach((item) => {
-//     let newItem = {
-//       ...item,
-//     }
-//     newChildren.push(newItem)
-//     if (item.children && lv < 2) {
-//       handle(item.children, lv + 1, (newItem.children = []))
-//     }
-//   })
-// }
-
-// handle(navData, 0, navbarConfig)
-// console.log('🚀 -- navbarConfig', navbarConfig)
-
-function getLink(children) {
+function getLink(children, parentItem) {
   let firstItem = children[0]
   if (firstItem.link) {
-    return firstItem.link
+    return firstItem.fullLink
   } else {
-    return getLink(firstItem.children)
+    return getLink(firstItem.children, firstItem)
   }
 }
 
@@ -38,15 +21,9 @@ navData.forEach((firstItem: any) => {
     children: undefined,
   }
   if (!firstItem.link) {
-    newItem.link = getLink(firstItem.children)
+    newItem.link = getLink(firstItem.children, firstItem)
   }
   navbarConfig.push(newItem)
 })
-
-fs.writeFileSync(
-  path.resolve(__dirname, './components/data3.json'),
-  JSON.stringify(navbarConfig),
-  'utf8',
-)
 
 export default navbar(navbarConfig)
