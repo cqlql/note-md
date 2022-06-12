@@ -110,7 +110,7 @@ https://github.com/paulmillr/chokidar
 
 :::warning
 
-全局安装会影响到 vuepress 包（包括项目内），所以建议项目安装
+建议全局安装
 
 :::
 

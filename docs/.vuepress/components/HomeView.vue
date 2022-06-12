@@ -36,7 +36,7 @@ handle(sidebar, newList)
             <div v-else class="name">{{ itemSecond.name }}</div>
             <ul v-if="itemSecond.children">
               <li v-for="itemThird of itemSecond.children">
-                <router-link :to="itemThird.link">
+                <router-link v-if="itemThird.link" :to="itemThird.link">
                   {{ itemThird.name }}
                 </router-link>
               </li>
