@@ -108,11 +108,7 @@ https://github.com/paulmillr/chokidar
 
 实现监听文件改变，并自动重启 nodejs 服务
 
-:::warning
-
-全局安装会影响到 vuepress 包（包括项目内），所以建议项目安装
-
-:::
+全局安装
 
 ```shell
 npm install -g nodemon
