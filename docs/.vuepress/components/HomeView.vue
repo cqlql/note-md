@@ -22,7 +22,7 @@ export default {
               {item.fullLink ? (
                 <router-link to={item.fullLink}>{item.text}</router-link>
               ) : (
-                item.text
+                <span class="t">{item.text}</span>
               )}
             </div>
             {vUl}
@@ -44,7 +44,7 @@ export default {
 <style lang="scss">
 .HomeView {
   padding: 10px 0;
-
+  font-size: 15px;
   & > ul {
     list-style-type: none;
     padding: 0;
@@ -56,16 +56,24 @@ export default {
     border-radius: 8px;
     padding: 28px 32px;
     & > .name {
-      padding: 10px 0;
-      font-size: 26px;
+      // padding: 10px 0;
+      padding-bottom: 10px;
+
+      .t {
+        font-size: 24px;
+      }
 
       .iconfont {
-        font-size: 1em;
+        font-size: 24px;
       }
     }
   }
   ul {
     margin: 0;
+  }
+
+  .t {
+    font-size: 18px;
   }
 }
 
