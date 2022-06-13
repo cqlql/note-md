@@ -1,0 +1,5 @@
+import{_ as n}from"./plugin-vue_export-helper.21dcd24c.js";import{f as a}from"./app.13594908.js";const s={},e=a(`<h2 id="\u8DEF\u5F84\u4FE1\u606F" tabindex="-1"><a class="header-anchor" href="#\u8DEF\u5F84\u4FE1\u606F" aria-hidden="true">#</a> \u8DEF\u5F84\u4FE1\u606F</h2><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">let</span> info <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">&#39;./dir/index.js&#39;</span><span class="token punctuation">)</span>
+
+info<span class="token punctuation">.</span>ext <span class="token comment">// \u6269\u5C55\u540D\uFF0C\u5982\u679C\u662F\u76EE\u5F55\uFF0C\u5219\u4E3A\u7A7A\u5B57\u7B26\u4E32</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,2);function t(i,c){return e}var p=n(s,[["render",t],["__file","path.html.vue"]]);export{p as default};
