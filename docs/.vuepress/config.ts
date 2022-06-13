@@ -1,4 +1,5 @@
-import { defineUserConfig } from 'vuepress'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import { defineUserConfig, viteBundler } from 'vuepress'
 import { searchPlugin } from '@vuepress/plugin-search'
 import theme from './theme'
 
@@ -25,4 +26,14 @@ export default defineUserConfig({
 
   theme,
   plugins: [searchPlugin()],
+
+  bundler: viteBundler({
+    viteOptions: {
+      plugins: [
+        vueJsx({
+          // options are passed on to @vue/babel-plugin-jsx
+        }),
+      ],
+    },
+  }),
 })

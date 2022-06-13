@@ -1,82 +1,67 @@
-<script lang="ts" setup>
+<script lang="tsx">
 import sidebar from './data.json'
+export default {
+  setup() {
+    function handle(children) {
+      let vLis = []
+      children.forEach((item) => {
+        let newItem = {
+          name: item.text,
+          icon: item.icon,
+          link: item.fullLink,
+        }
+        let vUl
+        if (item.children) {
+          vUl = handle(item.children, (newItem.children = []))
+        }
 
-let newList = []
+        vLis.push(
+          <li>
+            <div class="name">
+              {item.icon && <i class={'icon iconfont icon-' + item.icon}></i>}
+              {item.fullLink ? (
+                <router-link to={item.fullLink}>{item.text}</router-link>
+              ) : (
+                item.text
+              )}
+            </div>
+            {vUl}
+          </li>,
+        )
+      })
 
-function handle(children, newList) {
-  children.forEach((item) => {
-    // if (typeof item == 'string') return
-    let newItem = {
-      name: item.text,
-      icon: item.icon,
-      link: item.fullLink,
+      return <ul>{vLis}</ul>
     }
-    if (item.children) {
-      handle(item.children, (newItem.children = []))
-    }
+    let vUl = handle(sidebar)
 
-    newList.push(newItem)
-  })
+    return () => {
+      return <div class="HomeView">{vUl}</div>
+    }
+  },
 }
-handle(sidebar, newList)
 </script>
-<template>
-  <div class="HomeView">
-    <div class="item" v-for="item of newList">
-      <template v-if="item.children">
-        <div class="item-name">
-          <i v-if="item.icon" :class="'icon iconfont icon-' + item.icon"></i>
-          {{ item.name }}</div
-        >
-        <ul>
-          <li v-for="itemSecond of item.children">
-            <router-link v-if="itemSecond.link" :to="itemSecond.link">
-              {{ itemSecond.name }}
-            </router-link>
-            <div v-else class="name">{{ itemSecond.name }}</div>
-            <ul v-if="itemSecond.children">
-              <li v-for="itemThird of itemSecond.children">
-                <router-link v-if="itemThird.link" :to="itemThird.link">
-                  {{ itemThird.name }}
-                </router-link>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </template>
-      <ul v-else>
-        <li>
-          <router-link :to="item.link">
-            {{ item.name }}
-          </router-link>
-        </li>
-      </ul>
-    </div>
-  </div>
-</template>
 
 <style lang="scss">
 .HomeView {
   padding: 10px 0;
 
-  // display: grid;
-  // grid-template-columns: 1fr 1fr 1fr;
-
-  .item {
-    // flex: 1;
+  & > ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  & > ul > li {
     break-inside: avoid;
     background-color: #242424;
     margin-bottom: 20px;
     border-radius: 8px;
     padding: 28px 32px;
-    // transition: background-color .5s;
-  }
-  .item-name {
-    padding: 10px 0;
-    font-size: 26px;
+    & > .name {
+      padding: 10px 0;
+      font-size: 26px;
 
-    .iconfont {
-      font-size: 1em;
+      .iconfont {
+        font-size: 1em;
+      }
     }
   }
   ul {
@@ -86,7 +71,7 @@ handle(sidebar, newList)
 
 html[data-theme='light'] {
   .HomeView {
-    .item {
+    & > ul > li {
       background-color: #f9f9f9;
     }
   }
