@@ -15,13 +15,19 @@ interface HandlerParams {
   fullLink: string
 }
 
+// 去掉文件 basename 序号
+// 此序号主要用来排序
+function removeBasenameFirstNo(basename: string) {
+  return basename.replace(/^\d\d_/, '')
+}
+
 function dirHandler(params: HandlerParams) {
   const { parentDirname, dirname, fullLink } = params
 
   let dirConfigPath = path.join(rootPath, docsDir, fullLink, '.config')
 
   const resultConfig = {
-    text: dirname,
+    text: removeBasenameFirstNo(dirname),
     icon: '',
     prefix: parentDirname ? `${dirname}/` : `/${dirname}/`,
     sort: 0,
@@ -44,7 +50,7 @@ function fileHandler(params: HandlerParams) {
   let filePath = path.join(rootPath, docsDir, fullLink)
 
   const resultConfig = {
-    text: dirname.replace(/\.md$/g, ''),
+    text: removeBasenameFirstNo(dirname.replace(/\.md$/g, '')),
     link: dirname,
     icon: '',
     fullLink: fullLink,
@@ -56,6 +62,7 @@ function fileHandler(params: HandlerParams) {
 
     let { title, icon, sort } = fm(fs.readFileSync(filePath, 'utf8')).attributes as any
 
+    // 优先使用 frontmatter 数据
     resultConfig.text = title || resultConfig.text
     resultConfig.icon = icon || resultConfig.icon
     resultConfig.sort = sort || resultConfig.sort
