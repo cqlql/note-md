@@ -1,6 +1,6 @@
 ## 实体类
 
-```c#
+```cs
 
 // 定义
 class WeatherForecast
