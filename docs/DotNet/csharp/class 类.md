@@ -1,3 +1,5 @@
+## 实体类
+
 ```c#
 
 // 定义
@@ -7,9 +9,14 @@ class WeatherForecast
 
     public int TemperatureC { get; set; }
 
+    // 只有 get
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
-    public string Summary { get; set; }
+    // 设置初始值
+    public string Title { get; set; } =  string.Empty;
+
+    // 可为 null
+    public string? Summary { get; set; };
 }
 
 // 使用
