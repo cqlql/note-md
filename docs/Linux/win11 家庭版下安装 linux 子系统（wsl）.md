@@ -1,7 +1,3 @@
----
-title: win11 家庭版下安装 Ubuntu
----
-
 ## 通过 VM 虚拟机安装
 
 [vm 虚拟机程序需要 Hyper-V](https://zhuanlan.zhihu.com/p/74906615)
