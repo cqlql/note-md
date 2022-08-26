@@ -11,7 +11,7 @@
 先下载 MySQL APT Repository，最新下载地址[打开此链接](https://dev.mysql.com/downloads/repo/apt)查看
 
 ```sh
-sudo wget -P/home https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb
+sudo wget -P /home https://dev.mysql.com/get/mysql-apt-config_0.8.23-1_all.deb
 ```
 
 解压
