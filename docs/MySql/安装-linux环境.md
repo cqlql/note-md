@@ -1,16 +1,12 @@
----
-title: 安装
----
+::: info
 
-## 安装 MySQL Community
-
-::: warning
-
-此安装方式在 wsl 中不能成功启动，目前没找到好的解决的办法，似乎与 wsl 没有 systemctl 有关。 [wsl 环境安装方式见下](#wsl-下简单安装方式)
+以下是对 **MySQL Community** 版本进行的安装
 
 :::
 
-### ubuntu apt 安装
+## ubuntu 下安装
+
+### apt 安装
 
 先下载 MySQL APT Repository，最新下载地址[打开此链接](https://dev.mysql.com/downloads/repo/apt)查看
 
@@ -64,7 +60,13 @@ systemctl status mysql
 sudo find / -path /mnt -prune , -name mysql
 ```
 
-## wsl 下简单安装方式
+## windows linux 子系统（wsl）安装 - 失败
+
+::: warning 失败原因
+
+此安装方式在 wsl 中不能成功启动，目前没找到好的解决的办法，似乎与 wsl 没有 systemctl 有关。 [wsl 环境安装方式见下](#wsl-下简单安装方式)
+
+:::
 
 ```sh
 # 更新 Ubuntu 软件源头
