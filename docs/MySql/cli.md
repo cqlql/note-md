@@ -10,6 +10,14 @@ systemctl status mysql
 systemctl restart mysql
 ```
 
+## 进入 Mysql
+
+以进行用户管理或者 sql 操作
+
+```sh
+mysql -u root -p
+```
+
 ## 查看端口
 
 在 SQL 中执行
