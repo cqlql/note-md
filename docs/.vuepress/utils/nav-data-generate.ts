@@ -25,13 +25,23 @@ function dirHandler(params: HandlerParams) {
   const { parentDirname, dirname, fullLink } = params
 
   let dirConfigPath = path.join(rootPath, docsDir, fullLink, '.config')
+  let readmePath = path.join(rootPath, docsDir, fullLink, 'README.md')
 
   const resultConfig = {
     text: removeBasenameFirstNo(dirname),
     icon: '',
     prefix: parentDirname ? `${dirname}/` : `/${dirname}/`,
     sort: 0,
+    fullLink: '',
+    link: '',
   }
+
+  // 有 README.md
+  try {
+    fs.accessSync(readmePath)
+    resultConfig.link = resultConfig.prefix
+    resultConfig.fullLink = fullLink
+  } catch (e) {}
 
   try {
     fs.openSync(dirConfigPath, 'r')

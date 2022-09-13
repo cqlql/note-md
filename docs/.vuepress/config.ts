@@ -1,6 +1,6 @@
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineUserConfig, viteBundler } from 'vuepress'
-import { searchPlugin } from '@vuepress/plugin-search'
+import searchPlugin from '@vuepress/plugin-search'
 import theme from './theme'
 
 export default defineUserConfig({

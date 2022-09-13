@@ -1,10 +1,7 @@
-import fs from 'fs'
-import path from 'path'
-
 import { navbar } from 'vuepress-theme-hope'
 import navData from './utils/nav-data-generate'
 
-const navbarConfig = ['/']
+const navbarConfig: any[] = ['/']
 
 function getLink(children, parentItem) {
   let firstItem = children[0]
@@ -20,7 +17,7 @@ navData.forEach((firstItem: any) => {
     ...firstItem,
     children: undefined,
   }
-  if (!firstItem.link) {
+  if (firstItem.children.length) {
     newItem.link = getLink(firstItem.children, firstItem)
   }
   navbarConfig.push(newItem)
