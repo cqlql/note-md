@@ -5,14 +5,9 @@ export default {
     function handle(children) {
       let vLis = []
       children.forEach((item) => {
-        let newItem = {
-          name: item.text,
-          icon: item.icon,
-          link: item.fullLink,
-        }
         let vUl
         if (item.children) {
-          vUl = handle(item.children, (newItem.children = []))
+          vUl = handle(item.children)
         }
 
         vLis.push(
@@ -20,7 +15,7 @@ export default {
             <div class="name">
               {item.icon && <i class={'icon iconfont icon-' + item.icon}></i>}
               {item.fullLink ? (
-                <router-link to={item.fullLink}>{item.text}</router-link>
+                <router-link to={item.fullLink.replace(/\.md$/, '.html')}>{item.text}</router-link>
               ) : (
                 <span class="t">{item.text}</span>
               )}
