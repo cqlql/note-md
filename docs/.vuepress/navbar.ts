@@ -1,7 +1,24 @@
 import { navbar } from 'vuepress-theme-hope'
 import navData from './utils/nav-data-generate'
 
-const navbarConfig: any[] = ['/']
+const navbarConfig = [
+  '/',
+  'JS',
+  'vue',
+  'TypeScript',
+  {
+    text: '前端',
+    children: ['JS', 'TypeScript', 'VUE'],
+  },
+  {
+    text: '后端',
+    children: ['.net'],
+  },
+  {
+    text: '数据库',
+    children: ['MySql', 'Redis'],
+  },
+]
 
 function getLink(children, parentItem) {
   let firstItem = children[0]
@@ -12,15 +29,42 @@ function getLink(children, parentItem) {
   }
 }
 
-navData.forEach((firstItem: any) => {
-  let newItem = {
-    ...firstItem,
-    children: undefined,
-  }
-  if (firstItem.children.length) {
-    newItem.link = getLink(firstItem.children, firstItem)
-  }
-  navbarConfig.push(newItem)
-})
+function parseNavbarConfig() {
+  let map = {}
+  navData.forEach((firstItem: any) => {
+    let newItem = {
+      ...firstItem,
+      children: undefined,
+    }
+    if (firstItem.children.length) {
+      newItem.link = getLink(firstItem.children, firstItem)
+    }
+    map[firstItem.text.toLowerCase()] = newItem
+  })
+
+  navbarConfig.forEach((conf, index) => {
+    if (typeof conf !== 'string') {
+      let newChildren: any[] = []
+      conf.children.forEach((key) => {
+        let item = map[key.toLowerCase()]
+        if (item) {
+          newChildren.push(item)
+        } else {
+          console.warn(`"${key}"没有对应的菜单`)
+        }
+      })
+
+      conf.children = newChildren
+    } else {
+      let item = map[conf.toLowerCase()]
+
+      if (item) {
+        navbarConfig[index] = item
+      }
+    }
+  })
+}
+
+parseNavbarConfig()
 
 export default navbar(navbarConfig)
