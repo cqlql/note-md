@@ -7,6 +7,13 @@
       "problemMatcher": [],
       "label": "npm: docs:dev",
       "detail": "npm run docs:dev"
+    },
+    {
+      "type": "npm",
+      "script": "docs:clean-dev",
+      "problemMatcher": [],
+      "label": "npm: docs:clean-dev",
+      "detail": "vuepress dev docs --clean-cache"
     }
   ]
 }
