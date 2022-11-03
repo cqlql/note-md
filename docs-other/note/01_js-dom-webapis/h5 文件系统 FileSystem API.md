@@ -187,7 +187,14 @@ img.src = URL.createObjectURL(blob)
 export default function download(file) {
   var a = document.createElement('a')
   a.download = file.name
+
+  // 1 file 对象保存到本地
   a.href = URL.createObjectURL(file)
+  // 2 直接将文本保存到本地
+  // a.href = URL.createObjectURL(new Blob(['文本内容文本内容文本内容文本内容']))
+  // 3 非 text/html 类型的文件链接
+  // a.href = 'http://e.xstt5.com/e/DownSys/doaction.php
+
   document.body.appendChild(a)
   a.click()
   a.remove()
@@ -198,4 +205,7 @@ location.href = URL.createObjectURL(blob)
 
 // 方式3：会出现闪屏
 window.open(URL.createObjectURL(blob))
+
+// 方式4：iframe ?? 待测试
 ```
+
