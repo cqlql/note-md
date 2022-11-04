@@ -1,6 +1,6 @@
 ## 对象初始化器
 
-不使用构造函数，而使用对象初始化器初始化函数
+不使用构造函数，而使用对象初始化器创建并初始化实例
 
 ```csharp
 namespace CqlDotNet.SDK.APIEntity;
@@ -14,7 +14,22 @@ public class APIResult
 
   public static APIResult Ok(object result)
   {
-    return new APIResult { status = 200, result = result };
+    // 使用对象初始化器
+    return new APIResult 
+    { 
+      status = 200,
+      result = result 
+    };
+    // 也可以加上括号。构造函数没有参数可以省略括号
+    // return new APIResult() { status = 200, result = result };
+
+    // 相当于
+    /*
+    var apiResult = new APIResult()
+    apiResult.status = 200
+    apiResult.result = result
+    */
+
   }
 
   public static APIResult Error(int status, string message)
