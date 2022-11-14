@@ -1,6 +1,11 @@
 ## 连接字符串
 
-[连接字符串 - 参考文档](https://docs.microsoft.com/zh-cn/dotnet/csharp/how-to/concatenate-multiple-strings)
+官方指南：[连接字符串](https://docs.microsoft.com/zh-cn/dotnet/csharp/how-to/concatenate-multiple-strings)
+
+在使用循环连接字符串时，应避免时用 String.Concat 或 + 运算符，应使用使用 [StringBuilder](https://learn.microsoft.com/zh-cn/dotnet/csharp/how-to/concatenate-multiple-strings#stringbuilder) 代替。
+
+
+
 
 ## 货币格式 `:C`
 
@@ -20,7 +25,6 @@ string date = DateTime.Today.ToShortDateString();
 // Use string interpolation to concatenate strings.
 string str = $"Hello {userName}. Today is {date}.";
 System.Console.WriteLine(str);
-
-
 ```
 
+更多信息：[如何连接多个字符串（C# 指南） | Microsoft Learn](https://learn.microsoft.com/zh-cn/dotnet/csharp/how-to/concatenate-multiple-strings#string-interpolation)
