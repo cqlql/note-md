@@ -1,11 +1,7 @@
 
 ## 理解
 
-多线程同时访问一个资源会出问题。这时就需要 lock 锁。
-
-应用了 lock 的变量，只有再等待此方法之前完后，才会继续执行使用了 lock 此变量的其他方法。
-
-问题？如果 lock 外围还有其他代码？那么会与 lock 语句包裹的代码分开执行吗？
+多线程同时访问一个资源会出问题。这时就需要 lock 互斥锁。
 
 **死锁**：线程X锁定变量A，但一直没有释放锁定，导致其他线程锁定变量A时一直阻塞。
 
@@ -30,8 +26,8 @@ static void MethodA()
   try
   {
     /* 
-    如果已经被锁定，则挂起线程，并提供最多 15s 挂起时间。超过时间或者变量不在挂起再往下执行。
-    如果没有被锁定，则开始锁定，lockWasTaken 变量设为 true。
+    如果 conch 已经被其他线程锁定，则挂起线程，并提供最多 15s 挂起时间。超过时间或者 conch 解锁后再往下执行。
+    如果 conch 没有被锁定，则开始锁定并往下执行，并且将 lockWasTaken 设为 true。
 
     参数2 也可直接使用 int 类型的毫秒时间
      */
@@ -47,10 +43,8 @@ static void MethodA()
   finally
   {
     /* 
-    finally 语句：不管是否异常，这里都会执行
-    
-    解锁变量 conch。
-    只有是当前进程锁定变量时才有效，否则会触发 System.Threading.SynchronizationLockException 异常，所以要加个判断。
+    解锁 conch。
+    只有是当前进程锁定了 conch 时才能调用 Monitor.Exit，否则会触发 System.Threading.SynchronizationLockException 异常，所以这里最好加个判断。
      */
     if (lockWasTaken) Monitor.Exit(conch);
   }
