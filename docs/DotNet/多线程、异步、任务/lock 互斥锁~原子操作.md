@@ -7,8 +7,31 @@
 
 **避免死锁**：使用 Monitor.TryEnter 方法结合 try-finally 语句代替 lock，并提供超时。
 
-
 ## lock 使用
+
+```cs
+static Random r = new Random();
+static string Message; // a shared resource
+static object conch = new object();
+static void MethodA()
+{
+  // 如果 conch 已经锁定，则挂起当前线程，直到 conch 解锁再往下执行
+  // 如果 conch 没有锁定，则开始锁定conch，直到 lock 语句执行完成解锁
+  lock (conch)
+  {
+    for (int i = 0; i < 5; i++)
+    {
+      Thread.Sleep(1000);
+      Message += "A";
+      Write(".");
+    }  
+  }
+    
+}
+```
+
+## 参考文档
+[lock 语句](https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/statements/lock)
 
 
 ## Monitor 使用 -- 推荐
@@ -50,7 +73,3 @@ static void MethodA()
   }
 }
 ```
-
-
-## 参考文档
-[lock 语句](https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/statements/lock)
