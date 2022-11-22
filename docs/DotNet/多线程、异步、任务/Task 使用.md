@@ -1,3 +1,8 @@
+
+## Task 说明
+
+从线程池中使用一个线程
+
 ## Task 基础使用
 
 等待方法
@@ -136,3 +141,35 @@ namespace NestedAndChildTasks
 ```
 
 参考文档：[C#嵌套任务和子任务](https://cloud.tencent.com/developer/article/1432315)
+
+
+## “Task.Factory.StartNew” vs “new Task(…).Start”
+
+`Task.Factory.StartNew` 能确保只调用一次 start，
+而 `new Task(…).Start` 可能在其他地方多次调用 start，。
+但有些地方还是需要 `new Task(…).Start`，见下：
+
+```cs
+// 错误的例子
+ Task t = null;
+t = Task.Factory.StartNew(() =>
+{
+    // …
+      // 这里 t会被视为 null
+    t.ContinueWith(/* … */);
+});
+
+// 正确的例子
+Task t = null;
+t = new Task(() =>
+{
+    // …
+    t.ContinueWith(/* … */);
+});
+t.Start();
+```
+
+原文链接：["Task.Factory.StartNew" vs "new Task(...).Start" - .NET Parallel Programming (microsoft.com)](https://devblogs.microsoft.com/pfxteam/task-factory-startnew-vs-new-task-start/)
+
+
+

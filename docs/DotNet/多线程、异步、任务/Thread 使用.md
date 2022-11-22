@@ -1,3 +1,5 @@
+## Thread 基本使用
+
 ```cs
 // 使用 Thread 创建的线程，默认为前台线程
 Thread tmpThread = new Thread(WriteFile);
@@ -22,3 +24,11 @@ void WriteFile()
     }
 }
 ```
+
+
+
+## Thread.Sleep
+
+挂起当前线程的操作
+
+
