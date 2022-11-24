@@ -29,12 +29,6 @@ public class APIResult
     apiResult.status = 200
     apiResult.result = result
     */
-
-  }
-
-  public static APIResult Error(int status, string message)
-  {
-    return new APIResult { status = status, message = message };
   }
 }
 
