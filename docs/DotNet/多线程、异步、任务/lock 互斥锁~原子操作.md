@@ -81,3 +81,38 @@ static void MethodA()
 
 ## 运算符++不是原子的，可使用 Interlocked.Increment 方法代替
 
+```cs
+class Program
+{
+  static int Counter;
+
+  static void MethodA()
+  {
+    for (int i = 0; i < 50; i++)
+    {
+      Thread.Sleep(10);
+      // Counter++;
+      Interlocked.Increment(ref Counter);
+    }
+  }
+
+  static void MethodB()
+  {
+    for (int i = 0; i < 50; i++)
+    {
+      Thread.Sleep(10);
+      // Counter++;
+      Interlocked.Increment(ref Counter);
+    }
+  }
+
+  static void Main(string[] args)
+  {
+    Task a = Task.Factory.StartNew(MethodA);
+    Task b =Task.Factory.StartNew(MethodB);
+
+    Task.WaitAll(new Task[] { a, b});
+    WriteLine($"{Counter} string modifications.");
+  }
+}
+```
