@@ -22,9 +22,50 @@ dotnet add package MySql.Data
 
 ## 连接数据库
 
-参考 [mysql 官方文档](https://dev.mysql.com/doc/connector-net/en/connector-net-connections-string.html)
+using 用来关闭数据库连接，释放非托管资源。
 
-## 插入数据
+```cs
+using MySql.Data.MySqlClient;
+
+string connStr = "server=192.168.1.223;user=joly;database=;port=3306;password=123123";
+using (MySqlConnection conn = new MySqlConnection(connStr))
+{
+  // 打开数据库连接
+  conn.Open();
+  // 执行 sql 语句...
+}
+```
+
+## 查询
+
+```cs
+var list = new List<User>();
+string connStr = "server=192.168.1.222;user=joly;database=;port=3306;password=123123";
+using (MySqlConnection conn = new MySqlConnection(connStr))
+{
+  using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM db_user.user;", conn))
+  {
+    conn.Open();
+
+    MySqlDataReader reader = cmd.ExecuteReader();
+
+    while (reader.Read())
+    {
+      list.Add(
+        new User
+        {
+          id = (int)reader[0],
+          username = (string)reader[1]
+        }
+      );
+    }
+  }
+}
+
+Console.WriteLine(list);
+```
+
+## 插入/更新实体
 
 使用 @参数名 避免 sql 注入， 以及字符串单双引号冲突等等问题
 
@@ -55,4 +96,6 @@ using (MySqlConnection conn = new MySqlConnection(connStr))
 
 ## 参考文档
 
-[相关包以及安装 - MySql 官方](https://dev.mysql.com/doc/connector-net/en/connector-net-installation-binary-nuget.html)
+[连接数据库](https://dev.mysql.com/doc/connector-net/en/connector-net-connections-string.html)
+
+[相关包以及安装](https://dev.mysql.com/doc/connector-net/en/connector-net-installation-binary-nuget.html)
