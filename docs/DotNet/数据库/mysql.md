@@ -94,8 +94,25 @@ using (MySqlConnection conn = new MySqlConnection(connStr))
 }
 ```
 
+## ExecuteNonQuery 与 ExecuteScalar 方法
+
+ExecuteNonQuery 只执行sql 语句，没有返回值
+
+ExecuteScalar 可实现返回新插入行的 id
+
+```cs
+string str = "server='(local)';database='mytable';uid='sa';pwd='sa'";       //创建连接字串
+SqlConnection con = new SqlConnection(str);  //创建连接对象
+con.Open(); //打开连接
+string strsql = "insert into mynews values ('刚刚插入的id是多少?') SELECT  @@IDENTITY  as  'bh'"; //插入语句
+SqlCommand cmd = new SqlCommand(strsql, con);//执行语句
+Label1.Text = "刚刚插入的行的id是" + cmd.ExecuteScalar();//返回赋值
+```
+
 ## 参考文档
 
 [连接数据库](https://dev.mysql.com/doc/connector-net/en/connector-net-connections-string.html)
 
 [相关包以及安装](https://dev.mysql.com/doc/connector-net/en/connector-net-installation-binary-nuget.html)
+
+[SQL之ExecuteScalar() - ProZkb - 博客园 (cnblogs.com)](https://www.cnblogs.com/ZkbFighting/p/7873989.html)
