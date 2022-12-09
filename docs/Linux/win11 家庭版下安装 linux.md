@@ -1,8 +1,17 @@
-## 1. 通过 VM 虚拟机安装
 
-[vm 虚拟机程序需要 Hyper-V](https://zhuanlan.zhihu.com/p/74906615)
 
-## 2. 直接安装 linux 子系统 WSLG(WSL2) - 命令方式
+::: warning
+
+以下两种方式都需要 [安装 Hyper-V](https://zhuanlan.zhihu.com/p/74906615)
+
+:::
+
+## 方式1：通过 VM 虚拟机软件安装
+
+此方式模拟真实硬件设备，最为保险的方式
+
+
+## 方式2：直接安装 linux 子系统 WSLG(WSL2) - 命令方式
 
 ```sh
 #设置WSL的版本为WSL2
