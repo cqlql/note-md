@@ -8,11 +8,7 @@
    <!-- 2. 使用 `wsl --update` 命令更新 wsl，确保 wsl 是最新的 -->
 2. 访问 `Microsoft Store` 来安装 `ubuntu`，这里我安装的是 `Ubuntu 22.04`
 3. 安装成功后需打开 `Ubuntu 22.04` 应用，等待初始化成功。
-4. 运行 `wsl -l -v` 检查 wsl 版本。如果版本是 1 需要使用 `wsl --set-version Ubuntu-22.04 2` 命令升级成 wsl2。
-
-   <!-- 1. 先[启用虚拟机功能](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-3---enable-virtual-machine-feature) -->
-
-   1. 如果无法升级成 wsl2 , 需 [安装 Linux 内核包](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
+4. 运行 `wsl -l -v` 检查 wsl 版本。如果版本是 1 需要使用 `wsl --set-version Ubuntu-22.04 2` 命令升级成 wsl2。如果无法升级成 wsl2 , 需 [安装 Linux 内核包](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
 
 
 ::: warning 如果是 Windows 11 Home ，需使用命令方式安装 HyperV
