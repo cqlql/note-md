@@ -1,6 +1,21 @@
 ## 先安装 wsl
 
-::: warning 如果是 Windows 11 Home ，需先安装 HyperV
+1. 打开 [程序和功能] -> [启用和关闭 windows 功能]
+   1. 勾选 [Hyper-V]。注意，`Windows 11 Home` 需使用命令方式安装，下面警告有详细方法。
+   2. 勾选 [适用于 Linux 的 Windows 子系统]
+   3. 现在就可以使用 `wsl -h` 命令了
+
+   <!-- 2. 使用 `wsl --update` 命令更新 wsl，确保 wsl 是最新的 -->
+2. 访问 `Microsoft Store` 来安装 `ubuntu`，这里我安装的是 `Ubuntu 22.04`
+3. 安装成功后需打开 `Ubuntu 22.04` 应用，等待初始化成功。
+4. 运行 `wsl -l -v` 检查 wsl 版本。如果版本是 1 需要使用 `wsl --set-version Ubuntu-22.04 2` 命令升级成 wsl2。
+
+   <!-- 1. 先[启用虚拟机功能](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-3---enable-virtual-machine-feature) -->
+
+   1. 如果无法升级成 wsl2 , 需 [安装 Linux 内核包](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
+
+
+::: warning 如果是 Windows 11 Home ，需使用命令方式安装 HyperV
 
 新建文本格式文件 HyperV.bat ，内容如下，然后以管理员运行即可
 
@@ -15,16 +30,10 @@ pause
 
 :::
 
-1. 勾选 [程序和功能] -> [启用和关闭 windows 功能] --> [适用于 Linux 的 Windows 子系统]
-   1. 现在就可以使用 `wsl -h` 命令了
 
-   <!-- 2. 使用 `wsl --update` 命令更新 wsl，确保 wsl 是最新的 -->
-2. 访问 `Microsoft Store` 来安装 `ubuntu`，这里我安装的是 `Ubuntu 22.04`
-3. 安装成功后需打开 `Ubuntu 22.04` 应用，等待初始化成功。
-4. 运行 `wsl -l -v` 检查 wsl 版本。如果版本是 1 需要使用 `wsl --set-version Ubuntu-22.04 2` 命令升级成 wsl2。
-   <!-- 1. 先[启用虚拟机功能](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-3---enable-virtual-machine-feature) -->
+## 安装 docker
 
-   1. 如果无法升级成 wsl2 , 需 [安装 Linux 内核包](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
+去 [Docker 官网](https://www.docker.com/) 下载 docker 安装程序安装。安装过程推荐勾选[使用 wsl2]
 
 ## 常见问题
 
