@@ -227,7 +227,7 @@ LyricContext.cs
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // 数据库连接字符串也可以在 services.AddDbContext 中指定
+            // 数据库连接字符串也可以在 services.AddDbContext 中指定，见下
             optionsBuilder.UseMySQL("server=192.168.1.115;database=LyricSys;user=jo;password=123!@#qwe");
         }
 

@@ -36,4 +36,4 @@ public class InfoController : ControllerBase
 
 [.net 日志 ILogger 基本使用](https://blog.csdn.net/m0_47659279/article/details/119845995)
 
-[.NET 中的日志记录 | Microsoft Docs](https://docs.microsoft.com/zh-cn/dotnet/core/extensions/logging)
+[.NET 中的日志记录](https://docs.microsoft.com/zh-cn/dotnet/core/extensions/logging)
