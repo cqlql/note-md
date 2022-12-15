@@ -4,10 +4,29 @@
 
 [详情移步](/MySql/00_docker 环境快速使用教程.html)
 
+## 创建模型
 
+```cs
+namespace AppConsole
+{
+  [Table("user")] // 当表名不一样时
+  public class User
+  {
+    [Colum("Id")] // 字段名重新映射
+    public int id { get; set; }
+    
+    [Required] // 字段必须
+    [StringLength(45)] // 字段长度
+    [Colum(TypeName="char")] // 类型重新映射
+    public string? username { get; set; }
 
+    public string? password { get; set; }
+    public string? nickname { get; set; }
+  }
+}
+```
 
-## 新建继承 DbContext 的类
+## 创建继承 DbContext 的类
 
 这个类将对应一个数据库。
 
@@ -21,13 +40,59 @@
 
 :::
 
-代码示例：
+新建 UserManage.cs
 
+```cs
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+namespace AppConsole
+{
+  public class UserManage : DbContext
+  {
+    public DbSet<User> User { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+      // Program.configuration 是根据 appsettings.json 创建的对象，将在控制台程序运行时进行初始化，实现代码见下面的 class Program
+      optionsBuilder.UseMySQL(ConfigurationExtensions.GetConnectionString(Program.configuration!, "MysqlDatabase")!);
+    }
+  }
+}
 
+```
 
+## 控制台程序使用
 
+```cs
+using Microsoft.Extensions.Configuration;
+namespace AppConsole
+{
+  class Program
+  {
+    public static IConfigurationRoot? configuration;
+    static void Main(string[] args)
+    {
+      // 用指定 json 文件创建 ConfigurationBuilder 对象
+      var builder = new ConfigurationBuilder()
+          // Microsoft.Extensions.Configuration.FileExtensions 包
+          .SetBasePath(Directory.GetCurrentDirectory())
+          // Microsoft.Extensions.Configuration.Json 包
+          .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
+      configuration = builder.Build();
+
+      using (var db = new UserManage())
+      {
+        foreach (var item in db.User)
+        {
+          Console.WriteLine(item.username);
+        }
+      }
+    }
+  }
+}
+
+```
 
 ## 参考文档
 
