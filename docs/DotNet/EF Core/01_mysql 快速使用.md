@@ -2,7 +2,7 @@
 
 ## 在 docker 环境中安装 mysql
 
-详情移步
+[详情移步](/MySql/00_docker 环境快速使用教程.html)
 
 
 
