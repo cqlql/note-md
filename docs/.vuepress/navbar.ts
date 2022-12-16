@@ -12,7 +12,7 @@ const navbarConfig = [
   },
   {
     text: '后端',
-    children: ['.net'],
+    children: ['.net', 'docker'],
   },
   {
     text: '数据库',
