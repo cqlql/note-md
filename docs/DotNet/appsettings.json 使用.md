@@ -1,6 +1,13 @@
 web.config 已经过时，现在推荐使用 appsettings.json
+## webapi 项目可在入口文件 Program.cs 中直接获取
 
-## 读取数据库连接字符串
+
+```cs
+ConfigurationExtensions.GetConnectionString(builder.Configuration, "UserManageDb");
+```
+
+
+## 通过 ConfigurationBuilder 类获取
 
 
 appsettings.json 示例
