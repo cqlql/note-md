@@ -128,4 +128,9 @@ using (var db = new UserManage(builder.Build()))
 
 ## 数据播种
 
+实现数据自动增删改。比如实现一个在如果没有数据时，填充一个初始数据。
+
+
+官方文档参考 [数据种子设定 - EF Core](https://learn.microsoft.com/zh-cn/ef/core/modeling/data-seeding)
+
 ## fluent api
