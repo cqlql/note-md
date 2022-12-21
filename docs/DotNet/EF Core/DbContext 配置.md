@@ -24,22 +24,22 @@ appsettings.json 配置文件
 ```cs {3-4}
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
-builder.Services.AddDbContext<UserManage>(options =>
+builder.Services.AddDbContext<UserManageDbContext>(options =>
               options.UseMySQL(ConfigurationExtensions.GetConnectionString(builder.Configuration, "UserManageDb")));
 ```
 
-继承 DbContext 的 UserManage.cs
+继承 DbContext 的 UserManageDbContext.cs
 
 ```cs
 
 using Microsoft.EntityFrameworkCore;
 namespace AppWebApi
 {
-  public class UserManage : DbContext
+  public class UserManageDbContext : DbContext
   {
     public DbSet<User>? User { get; set; }
 
-    public UserManage(DbContextOptions<UserManage> options) : base(options)
+    public UserManageDbContext(DbContextOptions<UserManageDbContext> options) : base(options)
     {
     }
   }
@@ -48,7 +48,7 @@ namespace AppWebApi
 
 控制器文件 UserController.cs
 
-由框架通过控制器构造函数注入 UserManage 实例
+由框架通过控制器构造函数注入 UserManageDbContext 实例
 
 将为每个请求创建 `ApplicationDbContext` 实例，并传递给控制器，并在请求结束后释放连接资源。
 
@@ -59,9 +59,9 @@ namespace AppWebApi
 public class UserController : ControllerBase
 {
     private readonly ILogger<UserController> _logger;
-    private readonly UserManage _context;
+    private readonly UserManageDbContext _context;
 
-    public UserController(UserManage context, ILogger<UserController> logger)
+    public UserController(UserManageDbContext context, ILogger<UserController> logger)
     {
       _context = context;
       _logger = logger;
@@ -79,20 +79,20 @@ public class UserController : ControllerBase
 
 这是一个控制台程序例子
 
-UserManage.cs
+UserManageDbContext.cs
 
 ```cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 namespace AppConsole
 {
-  public class UserManage : DbContext
+  public class UserManageDbContext : DbContext
   {
     // 将 User 映射到表
     public DbSet<User> User { get; set; }
 
     private readonly IConfigurationRoot? _configuration;
-    public UserManage (IConfigurationRoot configuration) {
+    public UserManageDbContext (IConfigurationRoot configuration) {
       _configuration = configuration;
     }
 
@@ -117,7 +117,7 @@ using Microsoft.Extensions.Configuration;
       // Microsoft.Extensions.Configuration.Json 包
       .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-using (var db = new UserManage(builder.Build()))
+using (var db = new UserManageDbContext(builder.Build()))
 {
   foreach (var item in db.User!)
   {
@@ -128,9 +128,80 @@ using (var db = new UserManage(builder.Build()))
 
 ## 数据播种
 
-实现数据自动增删改。比如实现一个在如果没有数据时，填充一个初始数据。
+数据播种不能单纯为“可以实现如果没有数据，将填充一个初始数据”。种子设定不应该是正常应用的一部分，因为会造成并发问题，所以是[数据迁移](https://learn.microsoft.com/zh-cn/ef/core/managing-schemas/migrations/managing?source=recommendations&tabs=dotnet-core-cli)情况使用？目前还有很多细节没搞清楚，等有时间了再来学习。
 
+- 数据播种参考文档：
+  1. [数据种子设定 - EF Core](https://learn.microsoft.com/zh-cn/ef/core/modeling/data-seeding)
+  2. [EntityFrameworkCore 教程：Data-Seeding（种子数据）](https://www.cnblogs.com/dotnet261010/p/12359695.html)
 
-官方文档参考 [数据种子设定 - EF Core](https://learn.microsoft.com/zh-cn/ef/core/modeling/data-seeding)
+目前测试结论，只有在表都没有的情况，才会初始化数据（会自动建表）
+
+以下是测试例子
+
+UserManageDbContext.cs
+
+```cs
+using Microsoft.EntityFrameworkCore;
+namespace AppWebApi
+{
+  public class UserManageDbContext : DbContext
+  {
+    public DbSet<User>? User { get; set; }
+
+    public UserManageDbContext(DbContextOptions<UserManageDbContext> options) : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<User>()
+      .HasData(new User
+      {
+        id = 1,
+        username = "joly",
+        password = "123",
+        nickname = "张三"
+      });
+    }
+  }
+}
+```
+
+控制器文件 UserController.cs
+
+```cs
+[ApiController]
+[Route("[controller]")]
+[Produces("application/json")]
+public class UserController : ControllerBase
+{
+  private readonly ILogger<UserController> _logger;
+  private readonly UserManageDbContext _context;
+
+  public UserController(UserManageDbContext context, ILogger<UserController> logger)
+  {
+    _context = context;
+    _logger = logger;
+  }
+
+  [HttpGet("Test")]
+  public bool Test()
+  {
+    // 使种子设定生效
+    var tfTrue = db.Database.EnsureCreated();
+
+    if(tfTrue)
+    {
+        Console.WriteLine("数据库创建成功!");
+    }
+    else
+    {
+        Console.WriteLine("数据库创建失败!");
+    }
+
+    return tfTrue
+  }
+}
+```
 
 ## fluent api
