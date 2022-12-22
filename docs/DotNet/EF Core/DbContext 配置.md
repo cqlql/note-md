@@ -205,3 +205,29 @@ public class UserController : ControllerBase
 ```
 
 ## fluent api
+
+实现对模型中的注解特性进行代替或者补充
+
+```cs
+using Microsoft.EntityFrameworkCore;
+namespace UserManage;
+
+public class UserManageDbContext : DbContext
+{
+  public DbSet<User>? User { get; set; }
+
+  public UserManageDbContext(DbContextOptions<UserManageDbContext> options) : base(options)
+  {
+  }
+
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    // example of using Fluent API instead of attributes
+    // to limit the length of a user name to under 15
+    modelBuilder.Entity<User>()
+      .Property(user => user.username)
+      .IsRequired() // NOT NULL
+      .HasMaxLength(15);
+  }
+}
+```
