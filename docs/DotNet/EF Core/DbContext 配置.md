@@ -225,6 +225,7 @@ public class UserManageDbContext : DbContext
     // example of using Fluent API instead of attributes
     // to limit the length of a user name to under 15
     modelBuilder.Entity<User>()
+      .ToTable("user")
       .Property(user => user.username)
       .IsRequired() // NOT NULL
       .HasMaxLength(15);
