@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as _,a as t}from"./app.d8cd8e11.js";const o={};function r(c,n){return _(),t("div")}const f=e(o,[["render",r],["__file","CRUD \u5B58\u50A8\u5E93.html.vue"]]);export{f as default};
