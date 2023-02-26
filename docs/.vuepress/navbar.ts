@@ -8,7 +8,7 @@ const navbarConfig = [
   'TypeScript',
   {
     text: '前端',
-    children: ['JS', 'TypeScript', 'VUE'],
+    children: ['CSS', 'JS', 'TypeScript', 'VUE'],
   },
   {
     text: '后端',
