@@ -12,7 +12,13 @@ const navbarConfig = [
   },
   {
     text: '后端',
-    children: ['.net', 'docker'],
+    children: [
+      'docker',
+      {
+        text: '.net',
+        children: ['.NET 学习'],
+      },
+    ],
   },
   {
     text: '数据库',
@@ -42,27 +48,44 @@ function parseNavbarConfig() {
     map[firstItem.text.toLowerCase()] = newItem
   })
 
-  navbarConfig.forEach((conf, index) => {
-    if (typeof conf !== 'string') {
-      let newChildren: any[] = []
-      conf.children.forEach((key) => {
-        let item = map[key.toLowerCase()]
+  function handle(list) {
+    list.forEach((conf, index) => {
+      if (typeof conf !== 'string') {
+        handle(conf.children)
+      } else {
+        let item = map[conf.toLowerCase()]
+
         if (item) {
-          newChildren.push(item)
+          list[index] = item
         } else {
-          console.warn(`"${key}"没有对应的菜单`)
+          console.warn(`"${conf}"没有对应的菜单`)
         }
-      })
-
-      conf.children = newChildren
-    } else {
-      let item = map[conf.toLowerCase()]
-
-      if (item) {
-        navbarConfig[index] = item
       }
-    }
-  })
+    })
+  }
+
+  handle(navbarConfig)
+  // navbarConfig.forEach((conf, index) => {
+  //   if (typeof conf !== 'string') {
+  //     let newChildren: any[] = []
+  //     conf.children.forEach((key) => {
+  //       let item = map[key.toLowerCase()]
+  //       if (item) {
+  //         newChildren.push(item)
+  //       } else {
+  //         console.warn(`"${key}"没有对应的菜单`)
+  //       }
+  //     })
+
+  //     conf.children = newChildren
+  //   } else {
+  //     let item = map[conf.toLowerCase()]
+
+  //     if (item) {
+  //       navbarConfig[index] = item
+  //     }
+  //   }
+  // })
 }
 
 parseNavbarConfig()
