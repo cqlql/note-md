@@ -14,10 +14,7 @@ const navbarConfig = [
     text: '后端',
     children: [
       'docker',
-      {
-        text: '.net',
-        children: ['.NET 学习'],
-      },
+      '.NET'
     ],
   },
   {
