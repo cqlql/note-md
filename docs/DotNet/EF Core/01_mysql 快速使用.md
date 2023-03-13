@@ -2,7 +2,7 @@
 
 ## 在 docker 环境中安装 mysql
 
-[详情移步](/MySql/00_docker 环境快速使用教程.html)
+[详情移步](/MySql/00_docker%20环境快速使用教程)
 
 ## 创建模型
 
@@ -50,7 +50,7 @@ namespace AppConsole
   public class UserManage : DbContext
   {
     // 将 User 映射到表
-    public DbSet<User> User { get; set; }
+    public DbSet<User> User  => Set<User>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
