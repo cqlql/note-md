@@ -1,4 +1,6 @@
-## 增
+
+这里是在 WebApi 控制器中操作的增删改查，所以需要先声明一个控制器类。
+
 
 ```cs
 [ApiController]
@@ -13,22 +15,27 @@ public class UserController : ControllerBase
     _db = db;
     _logger = logger;
   }
+}
+```
 
-  // 增
-  [HttpPost("Add")]
-  public APIResult<object> Add(User user)
+## 增
+
+```cs
+
+// 增
+[HttpPost("Add")]
+public APIResult<object> Add(User user)
+{
+  // mark product as added in change tracking
+  _db.Add(user);
+  // save tracked changes to database
+  int affected = _db.SaveChanges();
+
+  if (affected == 1)
   {
-    // mark product as added in change tracking
-    _db.Add(user);
-    // save tracked changes to database
-    int affected = _db.SaveChanges();
-
-    if (affected == 1)
-    {
-      return APIResult.Ok();
-    }
-    return APIResult.Error<object>("新增失败");
+    return APIResult.Ok();
   }
+  return APIResult.Error<object>("新增失败");
 }
 ```
 
@@ -74,7 +81,7 @@ public APIResult<object> UpdatePassword(User user)
   SharpPad.Output.DumpBlocking(user);
   
   // get first user whose name starts with name
-  User updateUser = _db.User!.First(u => u.id == user.id);
+  User updateUser = _db.User.First(u => u.id == user.id);
   updateUser.password = user.password;
 
   // save tracked changes to database 
@@ -122,7 +129,7 @@ content-type: application/json
 [HttpDelete("{id}")]
 public APIResult<object> Delete(long id)
 {
-  User? updateUser = _db.User!.FirstOrDefault(u => u.id == id);
+  User? updateUser = _db.User.FirstOrDefault(u => u.id == id);
 
   if (updateUser == null) {
     return APIResult.Error("用户不存在");
@@ -142,7 +149,6 @@ public APIResult<object> Delete(long id)
 ```
 
 delete 请求示例
-
 
 ```
 DELETE https://localhost:7085/api/User/1

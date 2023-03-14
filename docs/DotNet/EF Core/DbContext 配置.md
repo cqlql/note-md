@@ -1,4 +1,4 @@
-## 注入方式：webapi + ef core 项目
+## 注入方式：webapi + EFCore 项目
 
 appsettings.json 配置文件
 
