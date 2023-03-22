@@ -1,6 +1,3 @@
----
-title: 登录验证
----
 
 ## 加盐
 
@@ -46,3 +43,6 @@ JWT.JwtHashAlgorithm.HS256);
 [JWT、JWS、JWE 的区别](https://cloud.tencent.com/developer/article/1460770)
 
 [C# 实现 Token](https://www.cnblogs.com/ckfuture/p/14516741.html)
+
+[什么是单点登录（SSO）](https://zhuanlan.zhihu.com/p/66037342)
+
