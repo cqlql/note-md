@@ -36,7 +36,7 @@ cd /d D:\_work\lmm-admin-ui\projects\apidocs\sever&&start pwsh -c "Start-Process
 
 ## 不自动退出
 
-用其他程序运行 pwsh 时，运行完不自动退出
+用 cmd(或者其他命令行程序)运行 pwsh 时，运行完不自动退出
 
 ```sh
 pwsh -noexit
