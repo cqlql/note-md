@@ -1,0 +1,27 @@
+import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as t,a as p,e as n,f as s,c as o,b as c,r as l}from"./app.3a8f32b4.js";const i={},u=n("p",null,"\u5B9E\u73B0\u50CF\u6570\u7EC4\u4E00\u6837\u8BBF\u95EE\u7C7B\u6216\u7ED3\u6784\u7684\u5B9E\u4F8B",-1),r={href:"https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/indexers/#BKMK_RelatedSections",target:"_blank",rel:"noopener noreferrer"},k=c(`<p>\u7D22\u5F15\u5668\u5B9A\u4E49\u793A\u4F8B\uFF1A</p><div class="language-csharp ext-cs line-numbers-mode"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SampleCollection<span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">{</span>
+   <span class="token comment">// Declare an array to store the data elements.</span>
+   <span class="token keyword">private</span> <span class="token class-name">T<span class="token punctuation">[</span><span class="token punctuation">]</span></span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">T</span><span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+   <span class="token comment">// Define the indexer to allow client code to use [] notation.</span>
+   <span class="token keyword">public</span> <span class="token return-type class-name">T</span> <span class="token keyword">this</span><span class="token punctuation">[</span><span class="token class-name"><span class="token keyword">int</span></span> i<span class="token punctuation">]</span>
+   <span class="token punctuation">{</span>
+      <span class="token keyword">get</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+      <span class="token keyword">set</span> <span class="token punctuation">{</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Program</span>
+<span class="token punctuation">{</span>
+   <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+   <span class="token punctuation">{</span>
+      <span class="token class-name"><span class="token keyword">var</span></span> stringCollection <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">SampleCollection<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      stringCollection<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;Hello, World&quot;</span><span class="token punctuation">;</span>
+      Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>stringCollection<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// The example displays the following output:</span>
+<span class="token comment">//       Hello, World.</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,2);function d(m,v){const a=l("ExternalLinkIcon");return t(),p("div",null,[u,n("p",null,[s("\u66F4\u591A\u4FE1\u606F\uFF1A"),n("a",r,[s("\u7D22\u5F15\u5668"),o(a)])]),k])}const y=e(i,[["render",d],["__file","\u7D22\u5F15\u5668.html.vue"]]);export{y as default};
