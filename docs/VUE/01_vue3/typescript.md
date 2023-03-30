@@ -1,9 +1,10 @@
 - [script setup 使用 reactive](#script-setup-使用-reactive)
 - [defineProps 设置默认值](#defineprops-设置默认值)
 - [defineEmits 事件](#defineemits-事件)
-- [vue 为全局组件声明类型](#vue-为全局组件声明类型)
+- [全局组件类型声明](#全局组件类型声明)
   - [方式 1 组件方式](#方式-1-组件方式)
   - [方式 2 原始方式](#方式-2-原始方式)
+- [组件类型变量](#组件类型变量)
 - [问题](#问题)
   - [Vue typescript 引入 svg 的问题](#vue-typescript-引入-svg-的问题)
 - [watch 监听 props](#watch-监听-props)
@@ -74,14 +75,13 @@ const visible = ref(false)
 </script>
 ```
 
-## vue 为全局组件声明类型
+## 全局组件类型声明
 
 ### 方式 1 组件方式
 
-picker.vue
+先创建一个 picker.vue 组件
 
 ```vue
-<!-- 如果是第三方组件，此组件只用作声明类型 -->
 <script lang="ts" setup>
 defineProps<{
   mode: 'multiSelector'
@@ -92,11 +92,10 @@ defineEmits<{
 </script>
 ```
 
-components.d.ts
+在全局 components.d.ts 类型文件中声明刚刚创建的组件
 
 ```ts
 import type picker from './picker.vue'
-
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     picker: typeof picker
@@ -132,6 +131,24 @@ declare module '@vue/runtime-core' {
   }
 }
 ```
+
+## 组件类型变量
+
+···ts
+
+```typescript
+import type Vue, { ComponentOptions } from 'vue'
+import MyComponent from '@/components/MyComponent.vue'
+
+const MyComponentOptions: ComponentOptions<Vue> = {
+  components: {
+    MyComponent,
+  },
+  // other options
+}
+```
+
+···
 
 ## 问题
 
