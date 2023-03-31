@@ -134,9 +134,7 @@ declare module '@vue/runtime-core' {
 
 ## 组件类型变量
 
-···ts
-
-```typescript
+```ts
 import type Vue, { ComponentOptions } from 'vue'
 import MyComponent from '@/components/MyComponent.vue'
 
@@ -147,8 +145,6 @@ const MyComponentOptions: ComponentOptions<Vue> = {
   // other options
 }
 ```
-
-···
 
 ## 问题
 
