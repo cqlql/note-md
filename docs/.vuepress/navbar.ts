@@ -4,18 +4,18 @@ import navData from './utils/nav-data-generate'
 const navbarConfig = [
   '/',
   'JS',
-  'vue',
+  'Vue',
   'TypeScript',
+  '.NET',
+  'MySql',
+  'docker',
   {
     text: '前端',
-    children: ['CSS', 'JS', 'TypeScript', 'VUE'],
+    children: ['CSS', 'JS', 'TypeScript', 'Vue'],
   },
   {
     text: '后端',
-    children: [
-      'docker',
-      '.NET'
-    ],
+    children: ['docker', '.NET'],
   },
   {
     text: '数据库',
