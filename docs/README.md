@@ -5,18 +5,6 @@ heroText: false
 tagline: false
 ---
 
-## 待办
-
-写一个基于 sftp 远程增删改文件脚本
-
-ts 复写接口
-
-```ts
-interface Config extends Omit<UserConfig, 'base'> {
-  base: string
-}
-```
-
 ## 导航
 
 <HomeView></HomeView>
