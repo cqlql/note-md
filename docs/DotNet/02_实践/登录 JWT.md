@@ -1,11 +1,17 @@
-
 ## 加盐
 
 ```
-salt = md5(pwd) // md5 结果中的 1357 作为 salt (此处未实现)
-SHA512(SHA512(pwd) + salt)
 
+// SHA512 版
+salt = md5(pwd) // md5 结果中的 1357 作为 salt
+SHA512(SHA512(pwd) + salt[1]+salt[3]+salt[5]+salt[7])
+
+// md5版
+code = md5(pwd) // md5 结果中的 125 作为 salt
+md5(code + code[1]+ code[2]+code[5])
 ```
+
+用 md5 加密就行了，没必要用 SHA512 ,性能好些，定好 salt 的规则，一般情况也够用
 
 ## token - JWT
 
@@ -45,4 +51,3 @@ JWT.JwtHashAlgorithm.HS256);
 [C# 实现 Token](https://www.cnblogs.com/ckfuture/p/14516741.html)
 
 [什么是单点登录（SSO）](https://zhuanlan.zhihu.com/p/66037342)
-
