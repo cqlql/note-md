@@ -1,0 +1,1 @@
+import{_ as e,Z as _,$ as t,a0 as n}from"./framework-d33190a3.js";const c={},o=n("p",null,"实现了 IEnumerable 接口的类都可以使用 linq",-1),s=[o];function a(l,r){return _(),t("div",null,s)}const d=e(c,[["render",a],["__file","01_理解.html.vue"]]);export{d as default};

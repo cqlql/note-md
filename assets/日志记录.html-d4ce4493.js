@@ -1,0 +1,1 @@
+import{_ as t,Z as a,$ as _,a0 as e,a1 as s}from"./framework-d33190a3.js";const c={},o=e("h2",{id:"概述",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#概述","aria-hidden":"true"},"#"),s(" 概述")],-1),n=e("p",null,"拦截并记录所有的请求异常",-1),r=[o,n];function d(i,l){return a(),_("div",null,r)}const f=t(c,[["render",d],["__file","日志记录.html.vue"]]);export{f as default};

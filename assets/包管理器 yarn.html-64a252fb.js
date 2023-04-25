@@ -1,0 +1,1 @@
+import{_ as a,Z as t,$ as _,a0 as e,a1 as r}from"./framework-d33190a3.js";const n={},s=e("h2",{id:"更新所有包",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#更新所有包","aria-hidden":"true"},"#"),r(" 更新所有包")],-1),c=e("p",null,"yarn upgrade --latest",-1),o=[s,c];function d(l,i){return t(),_("div",null,o)}const f=a(n,[["render",d],["__file","包管理器 yarn.html.vue"]]);export{f as default};

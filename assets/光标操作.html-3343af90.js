@@ -1,0 +1,32 @@
+import{_ as t,Z as p,$ as o,a0 as n,a1 as s,Y as e,a2 as c,E as l}from"./framework-d33190a3.js";const i={},u={id:"记录光标位置应使用-range",tabindex:"-1"},r=n("a",{class:"header-anchor",href:"#记录光标位置应使用-range","aria-hidden":"true"},"#",-1),d={href:"https://developer.mozilla.org/zh-CN/docs/Web/API/range",target:"_blank",rel:"noopener noreferrer"},k={href:"https://developer.mozilla.org/zh-CN/docs/Web/API/Selection",target:"_blank",rel:"noopener noreferrer"},v=c(`<p>需求场景：有时候，需要在指定的光标位置插入元素，但是，光标定位后，点击插入按钮时会失焦，这时就需要记录光标位置，插入到光标失焦之前的位置</p><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> eNodeItem
+  <span class="token keyword">let</span> range
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 点击记录 range</span>
+    <span class="token function">onNodeClick</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      range <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getRangeAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+      eNodeItem <span class="token operator">=</span> event<span class="token punctuation">.</span>target
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 插入</span>
+    <span class="token function">onSearchSelect</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>eNodeItem<span class="token punctuation">)</span> <span class="token keyword">return</span>
+      eNodeItem<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">const</span> sel <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">const</span> textNode <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+
+      range<span class="token punctuation">.</span><span class="token function">deleteContents</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+      range<span class="token punctuation">.</span><span class="token function">insertNode</span><span class="token punctuation">(</span>textNode<span class="token punctuation">)</span>
+
+      <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        range <span class="token operator">=</span> range<span class="token punctuation">.</span><span class="token function">cloneRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        range<span class="token punctuation">.</span><span class="token function">setStartAfter</span><span class="token punctuation">(</span>textNode<span class="token punctuation">)</span> <span class="token comment">// 移动到指定 元素 后面</span>
+        range<span class="token punctuation">.</span><span class="token function">collapse</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+        sel<span class="token punctuation">.</span><span class="token function">removeAllRanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel<span class="token punctuation">.</span><span class="token function">addRange</span><span class="token punctuation">(</span>range<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,2);function m(b,f){const a=l("ExternalLinkIcon");return p(),o("div",null,[n("h2",u,[r,s(" 记录光标位置应使用 "),n("a",d,[s("Range"),e(a)])]),n("p",null,[s("注意，不是用 "),n("a",k,[s("Selection"),e(a)])]),v])}const _=t(i,[["render",m],["__file","光标操作.html.vue"]]);export{_ as default};
