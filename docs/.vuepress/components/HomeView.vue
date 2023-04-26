@@ -1,13 +1,36 @@
 <script lang="tsx">
-import { h } from 'vue'
 import sidebar from './data.json'
-import HomeViewFix from './HomeViewFix'
 export default {
   setup() {
-    return () => {
-      return h(HomeViewFix, {
-        sidebar,
+    function handle(children) {
+      let vLis: any[] = []
+      children.forEach((item) => {
+        let vUl
+        if (item.children) {
+          vUl = handle(item.children)
+        }
+
+        vLis.push(
+          <li>
+            <div class="name">
+              {item.icon && <i class={'icon iconfont icon-' + item.icon}></i>}
+              {item.fullLink ? (
+                <router-link to={item.fullLink.replace(/\.md$/, '.html')}>{item.text}</router-link>
+              ) : (
+                <span class="t">{item.text}</span>
+              )}
+            </div>
+            {vUl}
+          </li>,
+        )
       })
+
+      return <ul>{vLis}</ul>
+    }
+    let vUl = handle(sidebar)
+
+    return () => {
+      return <div class="HomeView">{vUl}</div>
     }
   },
 }

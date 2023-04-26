@@ -1,6 +1,10 @@
 /**
+ * 问题得到修复，此文件弃用
+ *
+ * https://github.com/vitejs/vite-plugin-vue/issues/159
  * 注意：本来这里用 script lang="tsx" 直接写 HomeView 中的，
  * 升级后发现不支持，目前找不到好的解决办法，分出一个文件解决
+ *
  */
 
 import { defineComponent } from 'vue'
