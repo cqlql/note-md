@@ -4,7 +4,7 @@ import searchPlugin from '@vuepress/plugin-search'
 import theme from './theme'
 
 export default defineUserConfig({
-  port: 3002,
+  port: 3008,
   lang: 'zh-CN',
   title: '开发笔记',
   // description: 'welcome',
