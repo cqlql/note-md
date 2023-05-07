@@ -1,4 +1,9 @@
-## 参考文档
+## 基本使用
+
+在 [class 类 - 基本定义](./class%20类) 中有介绍
+
+
+## 字段 set get 好处
 
 [C#中{get;set;}](https://blog.csdn.net/qq_40091720/article/details/87935319)
 
