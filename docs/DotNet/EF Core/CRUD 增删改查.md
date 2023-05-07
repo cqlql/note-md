@@ -1,5 +1,7 @@
 
-这里是在 WebApi 控制器中操作的增删改查，所以需要先声明一个控制器类。
+
+## 先声明控制器类
+代码示例是在 WebApi 控制器中操作的增删改查，所以先声明一个控制器类。
 
 
 ```cs
@@ -17,6 +19,20 @@ public class UserController : ControllerBase
   }
 }
 ```
+
+## 查
+
+
+### 只查第一个
+
+```cs
+// 查不到返回初始值，一般是 null
+User? updateUser = _db.User.FirstOrDefault(u => u.id == id);
+
+// 查不到直接报错
+User updateUser = _db.User.First(u => u.id == id);
+```
+
 
 ## 增
 

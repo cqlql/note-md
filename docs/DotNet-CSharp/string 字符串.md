@@ -87,3 +87,10 @@ Console.WriteLine($"数: {10000:N}"); // 10,000.00
 // 这里涉及 '#' '0' 占位符，',' 分隔符
 WriteLine($"{timer.ElapsedMilliseconds:#,##0}ms elapsed.");
 ```
+
+## 非空判断
+
+```cs
+string.IsNullOrEmpty("") // true
+string.IsNullOrEmpty(null) // true
+```
