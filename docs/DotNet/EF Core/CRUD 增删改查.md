@@ -34,6 +34,14 @@ User updateUser = _db.User.First(u => u.id == id);
 ```
 
 
+### 是否存在
+
+```cs
+bool isExists = await _db.User.Where(u => u.username == user.username).AnyAsync();
+```
+
+
+
 ## 增
 
 ```cs
