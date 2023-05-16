@@ -1,25 +1,4 @@
 
-
-## 先声明控制器类
-代码示例是在 WebApi 控制器中操作的增删改查，所以先声明一个控制器类。
-
-
-```cs
-[ApiController]
-[Route("api/[controller]")]
-[Produces("application/json")]
-public class UserController : ControllerBase
-{
-  private readonly ILogger<UserController> _logger;
-  private readonly UserManageDbContext _db;
-  public UserController(UserManageDbContext db, ILogger<UserController> logger)
-  {
-    _db = db;
-    _logger = logger;
-  }
-}
-```
-
 ## 查
 
 

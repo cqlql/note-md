@@ -17,18 +17,7 @@ appsettings.json 配置文件
 }
 ```
 
-入口文件 Program.cs
-
-获取连接字符串，并注入到 DbContext
-
-```cs {3-4}
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
-builder.Services.AddDbContext<UserManageDbContext>(options =>
-              options.UseMySQL(ConfigurationExtensions.GetConnectionString(builder.Configuration, "UserManageDb")));
-```
-
-继承 DbContext 的 UserManageDbContext.cs
+新建继承 DbContext 的 UserManageDbContext.cs 文件
 
 ```cs
 
@@ -45,6 +34,18 @@ namespace AppWebApi
   }
 }
 ```
+
+入口文件 Program.cs
+
+获取连接字符串，并注入到 DbContext
+
+```cs {3-4}
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+builder.Services.AddDbContext<UserManageDbContext>(options =>
+              options.UseMySQL(ConfigurationExtensions.GetConnectionString(builder.Configuration, "UserManageDb")));
+```
+
 
 控制器文件 UserController.cs
 
