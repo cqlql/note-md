@@ -24,8 +24,6 @@ bool isExists = await _db.User.Where(u => u.username == user.username).AnyAsync(
 ## 增
 
 ```cs
-
-// 增
 [HttpPost("Add")]
 public APIResult<object> Add(User user)
 {
@@ -42,17 +40,7 @@ public APIResult<object> Add(User user)
 }
 ```
 
-post 请求示例
 
-```
-POST https://localhost:7085/api/User/Add
-
-content-type: application/json
-{
-  "username": "joly1",
-  "password": "123123"
-}
-```
 
 ## 改
 
@@ -99,31 +87,6 @@ public APIResult<object> UpdatePassword(User user)
 }
 ```
 
-post 请求示例
-
-```
-
-### 修改整个对象
-POST https://localhost:7085/api/User/update
-
-content-type: application/json
-
-{
-  "id":"1",
-  "username": "joly1",
-  "password": "123123"
-}
-
-### 修改密码
-
-POST https://localhost:7085/api/User/UpdatePassword
-content-type: application/json
-
-{
-  "id":"1",
-  "password": "xxx"
-}
-```
 
 ## 删
 
@@ -151,11 +114,6 @@ public APIResult<object> Delete(long id)
 }
 ```
 
-delete 请求示例
-
-```
-DELETE https://localhost:7085/api/User/1
-```
 
 ## 参考文档
 
