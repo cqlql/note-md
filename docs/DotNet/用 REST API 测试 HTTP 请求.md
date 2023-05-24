@@ -18,6 +18,33 @@ https://uc.youzhuanla.com/online/get?pagenum=10&page=1
 authorization: Bearer {{authToken}}
 ```
 
+## 配置环境变量
+
+在 vscode setting.json 中配置
+
+```json
+{
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "username": "jo",
+      "password": "123456"
+    },
+    "local": {
+      "hostname": "localhost:7085",
+      "password": "{{$shared password}}"
+    },
+    "production": {
+      "hostname": "localhost:8081",
+      "password": "{{$shared password}}"
+    }
+  }
+}
+```
+
+## 切换环境
+
+ctrl+shift+p 选择 rest-client:switch-environment，在配置环境变量的前提下有用
+
 ## 参考文档
 
 [REST 客户端 - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
