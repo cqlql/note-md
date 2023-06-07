@@ -1,3 +1,6 @@
+
+## 已失效
+
 创建 clientAppEnhance.ts
 
 clientAppEnhance.ts 为 webpack 待编译文件，相当于一个客户端全局入口，可 import css
@@ -23,3 +26,8 @@ module.exports = {
   clientAppEnhanceFiles: vuepressUtils.path.resolve(__dirname, './clientAppEnhance.ts'),
 }
 ```
+
+
+## 新方式
+
+https://v2.vuepress.vuejs.org/zh/advanced/cookbook/usage-of-client-config.html
