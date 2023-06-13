@@ -26,7 +26,9 @@ var claims = new[]
 };
 
 var token = new JwtSecurityToken(
+    // JWT 的签发者，一般是一个 http(s) url，如 https://www.baidu.com。选填。
     issuer: "your_issuer_here",
+    // JWT 的受众
     audience: "your_audience_here",
     claims: claims,
     expires: DateTime.UtcNow.AddHours(1),
@@ -36,3 +38,5 @@ var token = new JwtSecurityToken(
 var jwtToken = new JwtSecurityTokenHandler().WriteToken(token);
 
 ```
+
+## 验证 JWT
