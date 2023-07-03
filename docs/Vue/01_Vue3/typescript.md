@@ -3,7 +3,9 @@
 - [defineEmits 事件](#defineemits-事件)
 - [vue 为全局组件声明类型](#vue-为全局组件声明类型)
   - [方式 1 组件方式](#方式-1-组件方式)
-  - [方式 2 原始方式](#方式-2-原始方式)
+  - [方式 2 原始方式 -- 不推荐](#方式-2-原始方式----不推荐)
+- [给 props 声明类型 -- 选项式](#给-props-声明类型----选项式)
+  - [参考文档](#参考文档)
 - [问题](#问题)
   - [Vue typescript 引入 svg 的问题](#vue-typescript-引入-svg-的问题)
 - [watch 监听 props](#watch-监听-props)
@@ -104,7 +106,7 @@ declare module '@vue/runtime-core' {
 }
 ```
 
-### 方式 2 原始方式
+### 方式 2 原始方式 -- 不推荐
 
 ```ts
 import { DefineComponent } from 'vue'
@@ -132,6 +134,23 @@ declare module '@vue/runtime-core' {
   }
 }
 ```
+
+## 给 props 声明类型 -- 选项式
+
+```ts
+import type { PropType } from 'vue'
+export default {
+  props: {
+    data: Object as PropType<{ id:string, name: string }>,
+  },
+}
+```
+
+### 参考文档
+
+
+[TypeScript 与选项式 API)](https://cn.vuejs.org/guide/typescript/options-api.html#typing-component-props)
+
 
 ## 问题
 

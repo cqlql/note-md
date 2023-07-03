@@ -8,6 +8,8 @@
 ### 销毁
 使用 store.$dispose
 
+注意，并不会真正销毁，当再次 use 后数据也会再次恢复过来。
+
 
 ### 代码示例
 
@@ -30,6 +32,7 @@ function createUseStore() {
 export function useFormDesignEditStoreInstall() {
   const store = useFormDesignEditStore();
   onUnmounted(() => {
+    store.$reset();
     store.$dispose();
     useFormDesignEditStoreReal = undefined;
   });
