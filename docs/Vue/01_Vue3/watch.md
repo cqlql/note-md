@@ -31,3 +31,15 @@ watch(list.value, (list, preList) => {
 ## 相关文档
 
 https://v3.cn.vuejs.org/guide/reactivity-computed-watchers.html#watch
+
+
+## watchEffect
+
+赋值表达式左侧不会被监听
+
+```ts
+ watchEffect(() => {
+  multiApprovalMode.value = selectedNode.value!.value.approval?.multiApprovalMode || '';
+});
+
+```
