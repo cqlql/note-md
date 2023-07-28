@@ -32,7 +32,7 @@ class Program
 
   }
 
-  static async Task Main(string[] args)
+  static async Task<int> Main(string[] args)
   {
     WriteLine("Please wait for the tasks to complete.");
     Stopwatch watch = Stopwatch.StartNew();
@@ -44,6 +44,8 @@ class Program
     WriteLine();
     WriteLine($"Results: {Message}.");
     WriteLine($"{watch.ElapsedMilliseconds:#,##0} elapsed milliseconds.");
+
+    return 0
   }
 }
 

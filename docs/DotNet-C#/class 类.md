@@ -92,3 +92,7 @@ public class BankAccount
 // 直接调用
 Console.WriteLine(BankAccount.InterestRete);
 ```
+
+## 静态类与普通类中静态成员区别
+
+目前没发现特别的区别，但看介绍是静态类中的静态成员在程序启动就会被初始化，而普通类静态成员在使用时才会被初始化。但这个结论无从验证

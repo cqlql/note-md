@@ -9,14 +9,14 @@ dotnet add package System.IdentityModel.Tokens.Jwt
 
 ## 生成 JWT
 
-注意 "your_secret_key_here" 不能太短，否则报错
+注意 "your_secret_key_here" 不能太短，即 大于16 bytes(字节)（即最少128bits），否则报错
 
 ```cs
 
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 
-var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key_here..your_secret_key_here"));
+var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key_here"));
 var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
 var claims = new[]
