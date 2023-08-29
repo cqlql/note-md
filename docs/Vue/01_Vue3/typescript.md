@@ -1,9 +1,10 @@
 - [script setup 使用 reactive](#script-setup-使用-reactive)
 - [defineProps 设置默认值](#defineprops-设置默认值)
 - [defineEmits 事件](#defineemits-事件)
+- [vue 定义组件类型](#vue-定义组件类型)
 - [vue 为全局组件声明类型](#vue-为全局组件声明类型)
   - [方式 1 组件方式](#方式-1-组件方式)
-  - [方式 2 原始方式 -- 不推荐](#方式-2-原始方式----不推荐)
+  - [方式 2 原始方式 -- 比较复杂，不推荐](#方式-2-原始方式----比较复杂不推荐)
 - [给 props 声明类型 -- 选项式](#给-props-声明类型----选项式)
   - [参考文档](#参考文档)
 - [问题](#问题)
@@ -76,6 +77,18 @@ const visible = ref(false)
 </script>
 ```
 
+## vue 定义组件类型
+
+```ts
+/**此组件不会被打包 */
+const TableFieldCompDef = defineComponent(
+  (_props: { row: Recordable; field: string; value: any }) => {
+    return () => {};
+  },
+);
+export type TableFieldComp = typeof TableFieldCompDef;
+```
+
 ## vue 为全局组件声明类型
 
 ### 方式 1 组件方式
@@ -106,7 +119,7 @@ declare module '@vue/runtime-core' {
 }
 ```
 
-### 方式 2 原始方式 -- 不推荐
+### 方式 2 原始方式 -- 比较复杂，不推荐
 
 ```ts
 import { DefineComponent } from 'vue'
