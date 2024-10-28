@@ -1,10 +1,9 @@
-// import { sidebar } from "vuepress-theme-hope";
-import navData from './utils/nav-data-generate'
+import { sidebar } from "vuepress-theme-hope";
 
-const sidebar = {}
+import navbarData from "./utils/nav-data-generate.js";
 
-navData.forEach((item: any) => {
-  sidebar[item.prefix] = [item]
+const sidebarData = {}
+navbarData.forEach((item: any) => {
+  sidebarData[item.prefix] = [item]
 })
-
-export default sidebar
+export default sidebar(sidebarData)

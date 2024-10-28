@@ -88,7 +88,7 @@ readdir({
   callback: (params) => {
     let { dirname, parentDir, parentDirname, isDirectory } = params
     if (dirname === 'README.md') return
-
+    
     const fullLink = parentDir + '/' + dirname
 
     if (isDirectory) {

@@ -1,6 +1,6 @@
 import { hopeTheme } from 'vuepress-theme-hope'
 import navbar from './navbar'
-import sidebar from './sidebar'
+import sidebarData from './sidebar'
 
 export default hopeTheme({
   hostname: 'http://docs.cqlql.top',
@@ -22,9 +22,13 @@ export default hopeTheme({
   navbar: navbar,
 
   // sidebar
-  sidebar: sidebar,
+  sidebar: sidebarData,
 
   displayFooter: true,
 
   pageInfo: ['Author', 'Original', 'Date', 'Category', 'Tag'],
+
+  plugins: {
+    searchPro: true,
+  },
 })

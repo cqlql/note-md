@@ -1,15 +1,17 @@
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import { defineUserConfig, viteBundler } from 'vuepress'
-import searchPlugin from '@vuepress/plugin-search'
-import theme from './theme'
+import { defineUserConfig } from "vuepress";
+import { viteBundler } from '@vuepress/bundler-vite'
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import theme from "./theme.js";
 
 export default defineUserConfig({
+  base: '/',
+
   port: 3008,
   lang: 'zh-CN',
   title: '开发笔记',
   // description: 'welcome',
 
-  base: '/',
+  theme,
 
   head: [
     [
@@ -23,16 +25,10 @@ export default defineUserConfig({
   alias: {
     '@': __dirname,
   },
-
-  theme,
-  plugins: [searchPlugin()],
-
   bundler: viteBundler({
     viteOptions: {
       plugins: [
-        vueJsx({
-          // options are passed on to @vue/babel-plugin-jsx
-        }),
+        vueJsx(),
       ],
     },
   }),

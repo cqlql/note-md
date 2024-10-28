@@ -54,7 +54,7 @@ function parseNavbarConfig() {
 
         if (item) {
           list[index] = item
-        } else {
+        } else if (conf !== '/') {
           console.warn(`"${conf}"没有对应的菜单`)
         }
       }
