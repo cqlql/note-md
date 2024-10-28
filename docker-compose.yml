@@ -1,0 +1,10 @@
+services:
+  web:
+    image: nginx
+    volumes:
+    - ./docs/.vuepress/dist:/usr/share/nginx/html
+    ports:
+    - "10010:80"
+    environment:
+    - NGINX_HOST=foobar.com
+    - NGINX_PORT=80
