@@ -8,7 +8,8 @@
     "docs:build": "vuepress-vite build docs",
     "docs:clean-dev": "vuepress-vite dev docs --clean-cache",
     "docs:dev": "vuepress-vite dev docs",
-    "docs:update-package": "pnpm dlx vp-update"
+    "docs:update-package": "pnpm dlx vp-update",
+    "docker": "docker-compose up -d"
   },
   "devDependencies": {
     "@vitejs/plugin-vue-jsx": "^3.1.0",

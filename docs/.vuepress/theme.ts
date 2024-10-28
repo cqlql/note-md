@@ -29,6 +29,8 @@ export default hopeTheme({
   pageInfo: ['Author', 'Original', 'Date', 'Category', 'Tag'],
 
   plugins: {
-    searchPro: true,
+    searchPro: {
+      autoSuggestions:false
+    },
   },
 })
