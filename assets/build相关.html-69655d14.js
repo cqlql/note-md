@@ -1,6 +1,0 @@
-import{_ as n,Z as s,$ as e,a2 as a}from"./framework-d33190a3.js";const t={},i=a(`<h1 id="build-相关" tabindex="-1"><a class="header-anchor" href="#build-相关" aria-hidden="true">#</a> build 相关</h1><h2 id="使用-no-module-构建传统的-script" tabindex="-1"><a class="header-anchor" href="#使用-no-module-构建传统的-script" aria-hidden="true">#</a> 使用 <code>--no-module</code> 构建传统的 script</h2><p>如果需要高的兼容性，或者使用 file 协议运行的页面，需要使用此命令</p><div class="language-json line-numbers-mode" data-ext="json"><pre class="language-json"><code><span class="token punctuation">{</span>
-  <span class="token property">&quot;scirpt&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vue-cli-service build --no-module&quot;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,4),o=[i];function c(d,l){return s(),e("div",null,o)}const u=n(t,[["render",c],["__file","build相关.html.vue"]]);export{u as default};

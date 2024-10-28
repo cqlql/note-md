@@ -1,1 +1,0 @@
-import{_ as t,Z as s,$ as a,a0 as e,a1 as c}from"./framework-d33190a3.js";const r={},o=e("h2",{id:"理解",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#理解","aria-hidden":"true"},"#"),c(" 理解")],-1),n=e("p",null,"使用 struct 可自定义值类型",-1),_=[o,n];function d(i,l){return s(),a("div",null,_)}const u=t(r,[["render",d],["__file","struct.html.vue"]]);export{u as default};

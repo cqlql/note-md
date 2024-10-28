@@ -1,5 +1,0 @@
-import{_ as n,Z as a,$ as s,a2 as e}from"./framework-d33190a3.js";const t={},c=e(`<h2 id="路径信息" tabindex="-1"><a class="header-anchor" href="#路径信息" aria-hidden="true">#</a> 路径信息</h2><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token keyword">let</span> info <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">&#39;./dir/index.js&#39;</span><span class="token punctuation">)</span>
-
-info<span class="token punctuation">.</span>ext <span class="token comment">// 扩展名，如果是目录，则为空字符串</span>
-
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,2),i=[c];function o(l,p){return a(),s("div",null,i)}const d=n(t,[["render",o],["__file","path.html.vue"]]);export{d as default};

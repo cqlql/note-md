@@ -1,1 +1,0 @@
-import{_,Z as e,$ as t,a0 as c}from"./framework-d33190a3.js";const o={},s=c("p",null,"中间件是处理请求的组件，先于过滤器执行；过滤器是控制器中定义的一组动作，在控制器方法执行前执行。",-1),n=[s];function a(r,l){return e(),t("div",null,n)}const f=_(o,[["render",a],["__file","过滤器与中间件.html.vue"]]);export{f as default};

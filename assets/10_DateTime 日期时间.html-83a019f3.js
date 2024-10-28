@@ -1,2 +1,0 @@
-import{_ as e,Z as a,$ as t,a2 as i}from"./framework-d33190a3.js";const n={},c=i(`<h2 id="当前时间" tabindex="-1"><a class="header-anchor" href="#当前时间" aria-hidden="true">#</a> 当前时间</h2><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>Console.WriteLine(DateTime.Now)
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div>`,2),s=[c];function r(d,_){return a(),t("div",null,s)}const l=e(n,[["render",r],["__file","10_DateTime 日期时间.html.vue"]]);export{l as default};
