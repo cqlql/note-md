@@ -8,16 +8,49 @@ const docsDir = 'docs'
 
 const navbarConfig = []
 
-interface HandlerParams {
-  parentDirname: string
-  parentDir: string
-  dirname: string
-  fullLink: string
-}
+readdir({
+  initValue: navbarConfig,
+  rootPath: path.join(rootPath, docsDir),
+  ignore: ['.vuepress', '.config', 'image'],
+  callback: (params) => {
+    let { dirname, parentDir, parentDirname, isDirectory } = params
+    if (dirname === 'README.md') return
+    
+    const fullLink = parentDir + '/' + dirname
+
+    if (isDirectory) {
+      return dirHandler({
+        dirname,
+        parentDir,
+        parentDirname,
+        fullLink,
+      })
+    }
+    return fileHandler({
+      dirname,
+      parentDir,
+      parentDirname,
+      fullLink,
+    })
+  },
+  sort(arr) {
+    arr.sort((a, b) => {
+      return b.sort - a.sort
+    })
+  },
+})
+
+fs.writeFileSync(
+  path.resolve(__dirname, '../components/data.json'),
+  JSON.stringify(navbarConfig),
+  'utf8',
+)
+
+export default navbarConfig
 
 // 去掉文件 basename 序号
 // 此序号主要用来排序
-function removeBasenameFirstNo(basename: string) {
+export function removeBasenameFirstNo(basename: string) {
   return basename.replace(/^\d\d_/, '')
 }
 
@@ -81,42 +114,9 @@ function fileHandler(params: HandlerParams) {
   return resultConfig
 }
 
-readdir({
-  initValue: navbarConfig,
-  rootPath: path.join(rootPath, docsDir),
-  ignore: ['.vuepress', '.config', 'image'],
-  callback: (params) => {
-    let { dirname, parentDir, parentDirname, isDirectory } = params
-    if (dirname === 'README.md') return
-    
-    const fullLink = parentDir + '/' + dirname
-
-    if (isDirectory) {
-      return dirHandler({
-        dirname,
-        parentDir,
-        parentDirname,
-        fullLink,
-      })
-    }
-    return fileHandler({
-      dirname,
-      parentDir,
-      parentDirname,
-      fullLink,
-    })
-  },
-  sort(arr) {
-    arr.sort((a, b) => {
-      return b.sort - a.sort
-    })
-  },
-})
-
-fs.writeFileSync(
-  path.resolve(__dirname, '../components/data.json'),
-  JSON.stringify(navbarConfig),
-  'utf8',
-)
-
-export default navbarConfig
+interface HandlerParams {
+  parentDirname: string
+  parentDir: string
+  dirname: string
+  fullLink: string
+}
