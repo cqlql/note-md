@@ -11,6 +11,8 @@
 - [opn 打开其他程序](#opn-打开其他程序)
 - [chokidar](#chokidar)
 - [nodemon](#nodemon)
+- [日志记录](#日志记录)
+- [nvm](#nvm)
 
 ## node-portfinder 自动获取可用端口
 
@@ -123,3 +125,15 @@ nodemon ./server.js 8080
 [nodemon 官网](https://nodemon.io)
 
 [nodemon github](https://github.com/remy/nodemon)
+
+
+
+## 日志记录
+
+[log4js](https://github.com/log4js-node/log4js-node)
+
+## nvm
+
+实现多个 node 版本共存，解决旧项目因为node版本太高无法运行情况（可以让项目运行在指定的 node 版本上）。
+
+[nvm介绍、nvm下载安装及使用](https://blog.csdn.net/qq_30376375/article/details/115877446)
