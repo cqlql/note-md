@@ -1,3 +1,7 @@
+---
+title: c#
+---
+
 ## .net 截图方案
 
 相关文章 [Headless Chrome入门](https://www.jianshu.com/p/aec4b1216011)
