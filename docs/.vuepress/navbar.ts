@@ -1,5 +1,5 @@
 import { navbar } from 'vuepress-theme-hope'
-import navData from './utils/nav-data-generate'
+import navData from './utils/nav-generate.js'
 
 const navbarConfig = [
   '/',

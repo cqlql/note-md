@@ -1,6 +1,6 @@
 import { sidebar } from "vuepress-theme-hope";
 
-import navbarData from "./utils/nav-data-generate.js";
+import navbarData from "./utils/nav-generate.js";
 
 const sidebarData = {}
 navbarData.forEach((item: any) => {

@@ -4,9 +4,9 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import theme from "./theme.js";
 import path from "path";
 import log4js from "log4js";
-import { removeBasenameFirstNo } from "./utils/nav-data-generate.js";
+import { removeBasenameFirstNo } from "./utils/nav-generate.js";
 
-// 日志记录--调试用
+// 日志记录调试用
 // log4js.configure({
 //   appenders: {
 //     console: { type: "console" },

@@ -1,58 +1,62 @@
 import fs from 'fs'
 import path from 'path'
-import readdir from './readdir'
+import readdir from './readdir.js'
 import fm from 'front-matter'
 
 const rootPath = process.cwd()
 const docsDir = 'docs'
 
-const navbarConfig = []
-
-readdir({
-  initValue: navbarConfig,
-  rootPath: path.join(rootPath, docsDir),
-  ignore: ['.vuepress', '.config', 'image'],
-  callback: (params) => {
-    let { dirname, parentDir, parentDirname, isDirectory } = params
-    if (dirname === 'README.md') return
-    
-    const fullLink = parentDir + '/' + dirname
-
-    if (isDirectory) {
-      return dirHandler({
-        dirname,
-        parentDir,
-        parentDirname,
-        fullLink,
-      })
-    }
-    return fileHandler({
-      dirname,
-      parentDir,
-      parentDirname,
-      fullLink,
-    })
-  },
-  sort(arr) {
-    arr.sort((a, b) => {
-      return b.sort - a.sort
-    })
-  },
-})
-
-fs.writeFileSync(
-  path.resolve(__dirname, '../components/data.json'),
-  JSON.stringify(navbarConfig),
-  'utf8',
-)
-
-export default navbarConfig
+export default navDataGenerate()
 
 // 去掉文件 basename 序号
 // 此序号主要用来排序
 export function removeBasenameFirstNo(basename: string) {
   return basename.replace(/^\d\d_/, '')
 }
+
+function navDataGenerate () {
+  const navData:NavDataItem[] = []
+  readdir({
+    initValue: navData,
+    rootPath: path.join(rootPath, docsDir),
+    ignore: ['.vuepress', '.config', 'image'],
+    callback: (params) => {
+      let { dirname, parentDir, parentDirname, isDirectory } = params
+      if (dirname === 'README.md') return
+      
+      const fullLink = parentDir + '/' + dirname
+  
+      if (isDirectory) {
+        return dirHandler({
+          dirname,
+          parentDir,
+          parentDirname,
+          fullLink,
+        })
+      }
+      return fileHandler({
+        dirname,
+        parentDir,
+        parentDirname,
+        fullLink,
+      })
+    },
+    sort(arr) {
+      arr.sort((a, b) => {
+        return b.sort - a.sort
+      })
+    },
+  })
+
+  fs.writeFileSync(
+    path.resolve(__dirname, '../components/data.json'),
+    JSON.stringify(navData),
+    'utf8',
+  )
+
+  return navData
+}
+
 
 function dirHandler(params: HandlerParams) {
   const { parentDirname, dirname, fullLink } = params
@@ -103,7 +107,7 @@ function fileHandler(params: HandlerParams) {
   try {
     fs.openSync(filePath, 'r')
 
-    let { title, icon, sort } = fm(fs.readFileSync(filePath, 'utf8')).attributes as any
+    let { title, icon, sort } = (fm as any)(fs.readFileSync(filePath, 'utf8')).attributes as any
 
     // 优先使用 frontmatter 数据
     resultConfig.text = title || resultConfig.text
@@ -114,9 +118,18 @@ function fileHandler(params: HandlerParams) {
   return resultConfig
 }
 
+
 interface HandlerParams {
   parentDirname: string
   parentDir: string
   dirname: string
   fullLink: string
+}
+
+export interface NavDataItem {
+  text: string;
+  link: string;
+  icon: string;
+  fullLink: string;
+  sort: number;
 }
