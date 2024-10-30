@@ -18,3 +18,10 @@ html[data-theme='dark'] {
     color: rgba(235, 235, 235, 0.6);
   }
 }
+
+// vuepress-plugin-search-pro 搜索插件
+// 固定高度，否则搜索结果高度改变会跳动
+.search-pro-modal-wrapper{
+  top: 5vh;
+  align-items: normal;
+}
