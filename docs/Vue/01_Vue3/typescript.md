@@ -10,6 +10,7 @@
 - [问题](#问题)
   - [Vue typescript 引入 svg 的问题](#vue-typescript-引入-svg-的问题)
 - [watch 监听 props](#watch-监听-props)
+- [props 中声明不影响 attrs 类型](#props-中声明不影响-attrs-类型)
 
 ## script setup 使用 reactive
 
@@ -183,4 +184,38 @@ watch(
   },
 )
 </script>
+```
+
+## props 中声明不影响 attrs 类型
+不影响 $attrs 继承，又可以类型约束
+
+```vue
+<script lang="ts" setup>
+defineOptions({
+  inheritAttrs: false,
+});
+
+interface Base {
+  text?: InstanceType<typeof ElButton>['text'];
+  size?: InstanceType<typeof ElButton>['size'];
+  disabled?: InstanceType<typeof ElButton>['disabled'];
+  link?: InstanceType<typeof ElButton>['link'];
+  type?: InstanceType<typeof ElButton>['type'];
+  onClick?: InstanceType<typeof ElButton>['onClick'];
+}
+
+interface Props extends /* @vue-ignore */ Base {
+  icon?: string;
+}
+
+const props = defineProps<Props>();
+</script>
+<template>
+  <el-button v-bind="$attrs">
+    <template v-if="props.icon" #icon>
+      <Icon :icon="props.icon" only-icon />
+    </template>
+    <slot></slot>
+  </el-button>
+</template>
 ```

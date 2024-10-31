@@ -6,7 +6,7 @@ export default hopeTheme({
   hostname: 'http://docs.cqlql.top',
 
   author: {
-    name: 'Mr.Joly',
+    name: '桥黎',
     url: '',
   },
 
