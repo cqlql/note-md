@@ -87,3 +87,12 @@ parsers:
 
 
 
+## 扩展脚本
+
+```js
+function main(config) {
+  // 将服务器添加到代理组中
+  config["proxy-groups"][0].proxies.unshift('xx2')
+  return config;
+}
+```
