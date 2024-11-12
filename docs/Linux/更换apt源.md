@@ -10,7 +10,7 @@ cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
 **国内源镜像源地址**
 
-阿里云： https://mirrors.aliyun.com
+阿里云： https://mirrors.aliyun.com 
 
 网易源： http://mirrors.163.com
 
