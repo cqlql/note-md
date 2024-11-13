@@ -178,7 +178,10 @@ watch(
 ## 获取第三方组件的 props 类型
 
 ```ts
+// 使用props中某个类型
 type size = InstanceType<typeof ElButton>['size']
+// 复制所有的 props，因为直接使用会编译异常，也许未来某个版本会改善
+type ElButtonProps = Pick<ButtonInstance['$props'], keyof ButtonInstance['$props']>;
 ```
 
 ## 声明 props 但又实际又是 attrs
@@ -190,18 +193,13 @@ defineOptions({
   inheritAttrs: false,
 });
 
-interface Base {
-  text?: InstanceType<typeof ElButton>['text'];
-  size?: InstanceType<typeof ElButton>['size'];
-  disabled?: InstanceType<typeof ElButton>['disabled'];
-  link?: InstanceType<typeof ElButton>['link'];
-  type?: InstanceType<typeof ElButton>['type'];
-  onClick?: InstanceType<typeof ElButton>['onClick'];
+type ButtonInstance = InstanceType<typeof ElButton>;
+// 复制所有的 props，因为直接使用会编译异常，也许未来某个版本会改善
+type ElButtonProps = Pick<ButtonInstance['$props'], keyof ButtonInstance['$props']>;
+interface Props extends /* @vue-ignore */ ElButtonProps {
+  icon?: any;
 }
 
-interface Props extends /* @vue-ignore */ Base {
-  icon?: string;
-}
 
 const props = defineProps<Props>();
 </script>
