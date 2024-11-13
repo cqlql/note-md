@@ -1,16 +1,3 @@
-- [script setup 使用 reactive](#script-setup-使用-reactive)
-- [defineProps 设置默认值](#defineprops-设置默认值)
-- [defineEmits 事件](#defineemits-事件)
-- [vue 定义组件类型](#vue-定义组件类型)
-- [vue 为全局组件声明类型](#vue-为全局组件声明类型)
-  - [方式 1 组件方式](#方式-1-组件方式)
-  - [方式 2 原始方式 -- 比较复杂，不推荐](#方式-2-原始方式----比较复杂不推荐)
-- [给 props 声明类型 -- 选项式](#给-props-声明类型----选项式)
-  - [参考文档](#参考文档)
-- [问题](#问题)
-  - [Vue typescript 引入 svg 的问题](#vue-typescript-引入-svg-的问题)
-- [watch 监听 props](#watch-监听-props)
-- [props 中声明不影响 attrs 类型](#props-中声明不影响-attrs-类型)
 
 ## script setup 使用 reactive
 
@@ -48,6 +35,8 @@ const props = withDefaults(
 ```
 
 ## defineEmits 事件
+
+[组件事件 | Vue.js](https://cn.vuejs.org/guide/components/events.html)
 
 script setup 中调用事件
 
@@ -186,7 +175,13 @@ watch(
 </script>
 ```
 
-## props 中声明不影响 attrs 类型
+## 获取第三方组件的 props 类型
+
+```ts
+type size = InstanceType<typeof ElButton>['size']
+```
+
+## 声明 props 但又实际又是 attrs
 不影响 $attrs 继承，又可以类型约束
 
 ```vue
