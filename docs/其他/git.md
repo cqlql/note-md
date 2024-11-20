@@ -3,8 +3,11 @@
 ## 配置多用户
 
 
-生成密钥，公钥 id_rsa.pub 复制到 github 或者 gitee。
-私钥留在 `~/.ssh/id_rsa` 位置，
+生成密钥。公钥 id_rsa.pub 中的内容复制到 github 或者 gitee，私钥放在 `~/.ssh/id_rsa` 位置。
+```sh
+ssh-keygen -t rsa
+```
+
 修改 `~/.ssh/config` 进行配置：
 ```conf
 Host github_x
@@ -21,7 +24,7 @@ Host github_x
 ssh -T git@github_x
 ```
 
-使用： 
+使用
 ```sh
 git clone git@github_x:cqlql/blog.git
 ```
